@@ -22,11 +22,13 @@ class Module(object):
     def endJob(self):
         if hasattr(self, 'objs') and self.objs != None:
             prevdir = ROOT.gDirectory
+            #print(self.dir)
             self.dir.cd()
             for obj in self.objs:
                 obj.Write()
             prevdir.cd()
-            if hasattr(self, 'histFile') and self.histFile != None:
+            #ultimo and con ultimo modulo histos
+            if hasattr(self, 'histFile') and self.histFile != None and self.__module__=="PhysicsTools.NanoAODTools.postprocessing.modules.common.close_histos":
                 self.histFile.Close()
 
     def beginFile(self, inputFile, outputFile, inputTree, wrappedOutputTree):

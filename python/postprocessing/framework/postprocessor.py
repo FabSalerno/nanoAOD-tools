@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 from PhysicsTools.NanoAODTools.postprocessing.framework.jobreport import JobReport
 from PhysicsTools.NanoAODTools.postprocessing.framework.preskimming import preSkim
 from PhysicsTools.NanoAODTools.postprocessing.framework.output import FriendOutput, FullOutput
@@ -160,9 +160,10 @@ class PostProcessor:
                 inFile = ROOT.TFile.Open(fname)
 
             # get input tree
-            inTree = inFile.Get("Events")
-            if inTree is None:
+            if type(inFile.Get("Friends")).__name__ == 'TTree':
                 inTree = inFile.Get("Friends")
+            else:
+                inTree = inFile.Get("Events")
             nEntries = min(inTree.GetEntries() -
                            self.firstEntry, self.maxEntries)
             totEntriesRead += nEntries
