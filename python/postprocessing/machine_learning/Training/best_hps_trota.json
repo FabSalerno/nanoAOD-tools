@@ -1,0 +1,15 @@
+{
+    "fj_units": 8,
+    "fj_activation": "sigmoid",
+    "fj_kernel_initializer": "random_normal",
+    "j_units": 7,
+    "j_activation": "tanh",
+    "j_kernel_initializer": "random_normal",
+    "j_dropout": 0.3,
+    "learning_rate": 0.0021982612297504135,
+    "tuner/epochs": 1000,
+    "tuner/initial_epoch": 334,
+    "tuner/bracket": 4,
+    "tuner/round": 4,
+    "tuner/trial_id": "1928"
+}

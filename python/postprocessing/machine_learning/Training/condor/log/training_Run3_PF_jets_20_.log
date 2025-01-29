@@ -1,0 +1,129 @@
+000 (7714824.000.000) 11/11 12:59:03 Job submitted from host: <137.138.55.115:9618?addrs=137.138.55.115-9618+[2001-1458-d00-17--12a]-9618&alias=bigbird23.cern.ch&noUDP&sock=schedd_4975_03c1>
+...
+000 (7714825.000.000) 11/11 12:59:04 Job submitted from host: <137.138.55.115:9618?addrs=137.138.55.115-9618+[2001-1458-d00-17--12a]-9618&alias=bigbird23.cern.ch&noUDP&sock=schedd_4975_03c1>
+...
+000 (7714828.000.000) 11/11 12:59:04 Job submitted from host: <137.138.55.115:9618?addrs=137.138.55.115-9618+[2001-1458-d00-17--12a]-9618&alias=bigbird23.cern.ch&noUDP&sock=schedd_4975_03c1>
+...
+040 (7714825.000.000) 11/11 13:22:05 Started transferring input files
+	Transferring to host: <128.142.248.197:9618?addrs=128.142.248.197-9618+[2001-1458-301-73--100-c4]-9618&alias=b9g23p2961.cern.ch&noUDP&sock=slot1_50_2232953_240b_71378>
+...
+040 (7714824.000.000) 11/11 13:22:05 Started transferring input files
+	Transferring to host: <128.142.248.197:9618?addrs=128.142.248.197-9618+[2001-1458-301-73--100-c4]-9618&alias=b9g23p2961.cern.ch&noUDP&sock=slot1_49_2232953_240b_71377>
+...
+040 (7714824.000.000) 11/11 13:22:05 Finished transferring input files
+...
+040 (7714825.000.000) 11/11 13:22:05 Finished transferring input files
+...
+001 (7714825.000.000) 11/11 13:22:06 Job executing on host: <128.142.248.197:9618?addrs=128.142.248.197-9618+[2001-1458-301-73--100-c4]-9618&alias=b9g23p2961.cern.ch&noUDP&sock=startd_5911_0866>
+	SlotName: slot1_50@b9g23p2961.cern.ch
+	CondorScratchDir = "/pool/condor/dir_1900455"
+	Cpus = 1
+	Disk = 2964349
+	Memory = 2000
+...
+001 (7714824.000.000) 11/11 13:22:07 Job executing on host: <128.142.248.197:9618?addrs=128.142.248.197-9618+[2001-1458-301-73--100-c4]-9618&alias=b9g23p2961.cern.ch&noUDP&sock=startd_5911_0866>
+	SlotName: slot1_49@b9g23p2961.cern.ch
+	CondorScratchDir = "/pool/condor/dir_1892795"
+	Cpus = 1
+	Disk = 2964349
+	Memory = 2000
+...
+006 (7714825.000.000) 11/11 13:22:15 Image size of job updated: 1
+	0  -  MemoryUsage of job (MB)
+	0  -  ResidentSetSize of job (KB)
+...
+006 (7714824.000.000) 11/11 13:22:15 Image size of job updated: 1780
+	2  -  MemoryUsage of job (MB)
+	1496  -  ResidentSetSize of job (KB)
+...
+006 (7714824.000.000) 11/11 13:22:37 Image size of job updated: 22092
+	2  -  MemoryUsage of job (MB)
+	1496  -  ResidentSetSize of job (KB)
+...
+006 (7714825.000.000) 11/11 13:22:37 Image size of job updated: 22036
+	2  -  MemoryUsage of job (MB)
+	2000  -  ResidentSetSize of job (KB)
+...
+040 (7714824.000.000) 11/11 13:22:37 Started transferring output files
+...
+040 (7714825.000.000) 11/11 13:22:37 Started transferring output files
+...
+040 (7714824.000.000) 11/11 13:22:37 Finished transferring output files
+...
+040 (7714825.000.000) 11/11 13:22:37 Finished transferring output files
+...
+005 (7714824.000.000) 11/11 13:22:37 Job terminated.
+	(1) Normal termination (return value 2)
+		Usr 0 00:00:01, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:01, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	211  -  Run Bytes Sent By Job
+	11068  -  Run Bytes Received By Job
+	211  -  Total Bytes Sent By Job
+	11068  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :        0        1         1 
+	   Disk (KB)            :       35       12   2964349 
+	   Memory (MB)          :        2     2000      2000 
+
+	Job terminated of its own accord at 2024-11-11T12:22:37Z with exit-code 2.
+...
+005 (7714825.000.000) 11/11 13:22:37 Job terminated.
+	(1) Normal termination (return value 2)
+		Usr 0 00:00:01, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:01, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	211  -  Run Bytes Sent By Job
+	11068  -  Run Bytes Received By Job
+	211  -  Total Bytes Sent By Job
+	11068  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :        0        1         1 
+	   Disk (KB)            :       35       12   2964349 
+	   Memory (MB)          :        2     2000      2000 
+
+	Job terminated of its own accord at 2024-11-11T12:22:37Z with exit-code 2.
+...
+040 (7714828.000.000) 11/11 13:24:11 Started transferring input files
+	Transferring to host: <128.142.248.197:9618?addrs=128.142.248.197-9618+[2001-1458-301-73--100-c4]-9618&alias=b9g23p2961.cern.ch&noUDP&sock=slot1_51_2232953_240b_71382>
+...
+040 (7714828.000.000) 11/11 13:24:11 Finished transferring input files
+...
+001 (7714828.000.000) 11/11 13:24:12 Job executing on host: <128.142.248.197:9618?addrs=128.142.248.197-9618+[2001-1458-301-73--100-c4]-9618&alias=b9g23p2961.cern.ch&noUDP&sock=startd_5911_0866>
+	SlotName: slot1_51@b9g23p2961.cern.ch
+	CondorScratchDir = "/pool/condor/dir_1228814"
+	Cpus = 1
+	Disk = 2964257
+	Memory = 2000
+...
+006 (7714828.000.000) 11/11 13:24:20 Image size of job updated: 1
+	0  -  MemoryUsage of job (MB)
+	0  -  ResidentSetSize of job (KB)
+...
+006 (7714828.000.000) 11/11 13:24:40 Image size of job updated: 22348
+	2  -  MemoryUsage of job (MB)
+	1768  -  ResidentSetSize of job (KB)
+...
+040 (7714828.000.000) 11/11 13:24:40 Started transferring output files
+...
+040 (7714828.000.000) 11/11 13:24:40 Finished transferring output files
+...
+005 (7714828.000.000) 11/11 13:24:40 Job terminated.
+	(1) Normal termination (return value 2)
+		Usr 0 00:00:01, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:01, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	211  -  Run Bytes Sent By Job
+	11068  -  Run Bytes Received By Job
+	211  -  Total Bytes Sent By Job
+	11068  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :        0        1         1 
+	   Disk (KB)            :       36       12   2964257 
+	   Memory (MB)          :        2     2000      2000 
+
+	Job terminated of its own accord at 2024-11-11T12:24:40Z with exit-code 2.
+...

@@ -1,0 +1,15 @@
+Proxy_filename          = x509up
+Proxy_path              = /afs/cern.ch/user/f/fsalerno/private/$(Proxy_filename)
+universe                = vanilla
+x509userproxy           = $(Proxy_path)
+use_x509userproxy       = true
+should_transfer_files   = YES
+when_to_transfer_output = ON_EXIT
+transfer_input_files    = $(Proxy_path)
++JobFlavour             = "nextweek"
+executable              = runner_QCD_HT1200to1500_2022_20_300_boosted.sh
+arguments               = 
+output                  = condor/output/QCD_HT1200to1500_2022_20_300_boosted.out
+error                   = condor/error/QCD_HT1200to1500_2022_20_300_boosted.err
+log                     = condor/log/QCD_HT1200to1500_2022_20_300_boosted.log
+queue

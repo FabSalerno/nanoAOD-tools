@@ -1,0 +1,12 @@
+Info in <TCanvas::Print>: png file /eos/user/f/fsalerno/framework/MachineLearning/Training_HOTVR_2018_1_standard_old/plots//TT_Mtt700to1000_2018_Discrimination_mixed.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/f/fsalerno/framework/MachineLearning/Training_HOTVR_2018_1_standard_old/plots//TT_Mtt700to1000_2018_Discrimination_mixed.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/f/fsalerno/framework/MachineLearning/Training_HOTVR_2018_1_standard_old/plots//TT_Mtt700to1000_2018Discrimination_resolved.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/f/fsalerno/framework/MachineLearning/Training_HOTVR_2018_1_standard_old/plots//TT_Mtt700to1000_2018Discrimination_resolved.pdf has been created
+/cvmfs/cms.cern.ch/slc7_amd64_gcc10/external/py3-numpy/1.22.4-fed14fba556da687b0d60c63c90ca3bc/lib/python3.9/site-packages/numpy/core/getlimits.py:499: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/cvmfs/cms.cern.ch/slc7_amd64_gcc10/external/py3-numpy/1.22.4-fed14fba556da687b0d60c63c90ca3bc/lib/python3.9/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+No handles with labels found to put in legend.
+No handles with labels found to put in legend.
+No handles with labels found to put in legend.
+No handles with labels found to put in legend.
