@@ -1,0 +1,57 @@
+filepath is =====  ['/eos/user/f/fsalerno/Data/HOTVR/ttx_ntuplizer/tt_mtt-1000toInf_MC2018_ntuplizer/NANO_NANO_100_Friend.root', '/eos/user/f/fsalerno/Data/HOTVR/ttx_ntuplizer/tt_mtt-1000toInf_MC2018_ntuplizer/NANO_NANO_106_Friend.root', '/eos/user/f/fsalerno/Data/HOTVR/ttx_ntuplizer/tt_mtt-1000toInf_MC2018_ntuplizer/NANO_NANO_107_Friend.root', '/eos/user/f/fsalerno/Data/HOTVR/ttx_ntuplizer/tt_mtt-1000toInf_MC2018_ntuplizer/NANO_NANO_10_Friend.root', '/eos/user/f/fsalerno/Data/HOTVR/ttx_ntuplizer/tt_mtt-1000toInf_MC2018_ntuplizer/NANO_NANO_113_Friend.root']
+File exists.
+Model loaded successfully.
+/eos/user/f/fsalerno/framework/MachineLearning/Training_HOTVR_2018_1_j_in_HVRj/model.h5 exists.
+Read permission for /eos/user/f/fsalerno/framework/MachineLearning/Training_HOTVR_2018_1_j_in_HVRj/model.h5 is granted.
+Write permission for /eos/user/f/fsalerno/framework/MachineLearning/Training_HOTVR_2018_1_j_in_HVRj/model.h5 is granted.
+Execute permission for /eos/user/f/fsalerno/framework/MachineLearning/Training_HOTVR_2018_1_j_in_HVRj/model.h5 is denied.
+/eos/user/f/fsalerno/framework/MachineLearning/Training_HOTVR_2018_1_j_in_HVRj/model.h5
+Because you requested a FJR we assume you want the final hadd. No name specified for the output file, will use tree.root
+Will write selected trees to /eos/user/f/fsalerno/Data/HOTVR/evaluate_j_in_HVRj_1_tt_mtt-1000toInf_MC2018_topeval/
+Pre-select 52288 entries out of 52288 (100.00%)
+Not copying unknown tree Friends
+Not copying unknown tree Friends
+Processed    10000/   52288 entries, 19.12% (elapsed time   131.9s, curr speed    0.076 kHz, avg speed    0.076 kHz), accepted     2506/   10001 events (25.06%)
+Processed    20000/   52288 entries, 38.25% (elapsed time   253.5s, curr speed    0.082 kHz, avg speed    0.079 kHz), accepted     4969/   20001 events (24.84%)
+Processed    30000/   52288 entries, 57.37% (elapsed time   366.0s, curr speed    0.089 kHz, avg speed    0.082 kHz), accepted     7404/   30001 events (24.68%)
+Processed    40000/   52288 entries, 76.50% (elapsed time   525.0s, curr speed    0.063 kHz, avg speed    0.076 kHz), accepted     9834/   40001 events (24.58%)
+Processed    50000/   52288 entries, 95.62% (elapsed time   650.9s, curr speed    0.079 kHz, avg speed    0.077 kHz), accepted    12320/   50001 events (24.64%)
+Processed 52288 preselected entries from /eos/user/f/fsalerno/Data/HOTVR/ttx_ntuplizer/tt_mtt-1000toInf_MC2018_ntuplizer/NANO_NANO_100_Friend.root (52288 entries). Finally selected 12889 entries
+Done /eos/user/f/fsalerno/Data/HOTVR/evaluate_j_in_HVRj_1_tt_mtt-1000toInf_MC2018_topeval/NANO_NANO_100_Friend_topeval_HOTVR_2_tt_mtt-1000toInf_MC2018.root
+Pre-select 52876 entries out of 52876 (100.00%)
+Not copying unknown tree Friends
+Not copying unknown tree Friends
+Processed    10000/   52876 entries, 18.91% (elapsed time   118.7s, curr speed    0.084 kHz, avg speed    0.084 kHz), accepted     2479/   10001 events (24.79%)
+Processed    20000/   52876 entries, 37.82% (elapsed time   243.2s, curr speed    0.080 kHz, avg speed    0.082 kHz), accepted     4940/   20001 events (24.70%)
+Processed    30000/   52876 entries, 56.74% (elapsed time   354.0s, curr speed    0.090 kHz, avg speed    0.085 kHz), accepted     7418/   30001 events (24.73%)
+Processed    40000/   52876 entries, 75.65% (elapsed time   533.3s, curr speed    0.056 kHz, avg speed    0.075 kHz), accepted     9863/   40001 events (24.66%)
+Processed    50000/   52876 entries, 94.56% (elapsed time   656.6s, curr speed    0.081 kHz, avg speed    0.076 kHz), accepted    12347/   50001 events (24.69%)
+Processed 52876 preselected entries from /eos/user/f/fsalerno/Data/HOTVR/ttx_ntuplizer/tt_mtt-1000toInf_MC2018_ntuplizer/NANO_NANO_106_Friend.root (52876 entries). Finally selected 13051 entries
+Done /eos/user/f/fsalerno/Data/HOTVR/evaluate_j_in_HVRj_1_tt_mtt-1000toInf_MC2018_topeval/NANO_NANO_106_Friend_topeval_HOTVR_2_tt_mtt-1000toInf_MC2018.root
+Pre-select 52025 entries out of 52025 (100.00%)
+Not copying unknown tree Friends
+Not copying unknown tree Friends
+Processed    10000/   52025 entries, 19.22% (elapsed time   127.2s, curr speed    0.079 kHz, avg speed    0.079 kHz), accepted     2517/   10001 events (25.17%)
+Processed    20000/   52025 entries, 38.44% (elapsed time   253.7s, curr speed    0.079 kHz, avg speed    0.079 kHz), accepted     4946/   20001 events (24.73%)
+Processed    30000/   52025 entries, 57.66% (elapsed time   364.9s, curr speed    0.090 kHz, avg speed    0.082 kHz), accepted     7384/   30001 events (24.61%)
+Processed    40000/   52025 entries, 76.89% (elapsed time   541.5s, curr speed    0.057 kHz, avg speed    0.074 kHz), accepted     9869/   40001 events (24.67%)
+Processed    50000/   52025 entries, 96.11% (elapsed time   659.0s, curr speed    0.085 kHz, avg speed    0.076 kHz), accepted    12359/   50001 events (24.72%)
+Processed 52025 preselected entries from /eos/user/f/fsalerno/Data/HOTVR/ttx_ntuplizer/tt_mtt-1000toInf_MC2018_ntuplizer/NANO_NANO_107_Friend.root (52025 entries). Finally selected 12835 entries
+Done /eos/user/f/fsalerno/Data/HOTVR/evaluate_j_in_HVRj_1_tt_mtt-1000toInf_MC2018_topeval/NANO_NANO_107_Friend_topeval_HOTVR_2_tt_mtt-1000toInf_MC2018.root
+Pre-select 42521 entries out of 42521 (100.00%)
+Not copying unknown tree Friends
+Not copying unknown tree Friends
+Processed    10000/   42521 entries, 23.52% (elapsed time   122.8s, curr speed    0.081 kHz, avg speed    0.081 kHz), accepted     2437/   10001 events (24.37%)
+Processed    20000/   42521 entries, 47.04% (elapsed time   243.4s, curr speed    0.083 kHz, avg speed    0.082 kHz), accepted     4944/   20001 events (24.72%)
+Processed    30000/   42521 entries, 70.55% (elapsed time   358.2s, curr speed    0.087 kHz, avg speed    0.084 kHz), accepted     7436/   30001 events (24.79%)
+Processed    40000/   42521 entries, 94.07% (elapsed time   528.8s, curr speed    0.059 kHz, avg speed    0.076 kHz), accepted     9886/   40001 events (24.71%)
+Processed 42521 preselected entries from /eos/user/f/fsalerno/Data/HOTVR/ttx_ntuplizer/tt_mtt-1000toInf_MC2018_ntuplizer/NANO_NANO_10_Friend.root (42521 entries). Finally selected 10509 entries
+Done /eos/user/f/fsalerno/Data/HOTVR/evaluate_j_in_HVRj_1_tt_mtt-1000toInf_MC2018_topeval/NANO_NANO_10_Friend_topeval_HOTVR_2_tt_mtt-1000toInf_MC2018.root
+Pre-select 10017 entries out of 10017 (100.00%)
+Not copying unknown tree Friends
+Not copying unknown tree Friends
+Processed    10000/   10017 entries, 99.83% (elapsed time   115.7s, curr speed    0.086 kHz, avg speed    0.086 kHz), accepted     2417/   10001 events (24.17%)
+Processed 10017 preselected entries from /eos/user/f/fsalerno/Data/HOTVR/ttx_ntuplizer/tt_mtt-1000toInf_MC2018_ntuplizer/NANO_NANO_113_Friend.root (10017 entries). Finally selected 2420 entries
+Done /eos/user/f/fsalerno/Data/HOTVR/evaluate_j_in_HVRj_1_tt_mtt-1000toInf_MC2018_topeval/NANO_NANO_113_Friend_topeval_HOTVR_2_tt_mtt-1000toInf_MC2018.root
+Total time 3167.6 sec. to process 209727 events. Rate = 66.2 Hz.
+DONE

@@ -1,0 +1,72 @@
+filepath is =====  ['/eos/user/f/fsalerno/Data/HOTVR/ttx_ntuplizer/tt_semilepton_MC2018_ntuplizer/NANO_NANO_1-1001_Friend.root', '/eos/user/f/fsalerno/Data/HOTVR/ttx_ntuplizer/tt_semilepton_MC2018_ntuplizer/NANO_NANO_1-1005_Friend.root', '/eos/user/f/fsalerno/Data/HOTVR/ttx_ntuplizer/tt_semilepton_MC2018_ntuplizer/NANO_NANO_1-1006_Friend.root', '/eos/user/f/fsalerno/Data/HOTVR/ttx_ntuplizer/tt_semilepton_MC2018_ntuplizer/NANO_NANO_1-1008_Friend.root', '/eos/user/f/fsalerno/Data/HOTVR/ttx_ntuplizer/tt_semilepton_MC2018_ntuplizer/NANO_NANO_1-100_Friend.root', '/eos/user/f/fsalerno/Data/HOTVR/ttx_ntuplizer/tt_semilepton_MC2018_ntuplizer/NANO_NANO_1-1010_Friend.root', '/eos/user/f/fsalerno/Data/HOTVR/ttx_ntuplizer/tt_semilepton_MC2018_ntuplizer/NANO_NANO_1-1012_Friend.root', '/eos/user/f/fsalerno/Data/HOTVR/ttx_ntuplizer/tt_semilepton_MC2018_ntuplizer/NANO_NANO_1-1013_Friend.root', '/eos/user/f/fsalerno/Data/HOTVR/ttx_ntuplizer/tt_semilepton_MC2018_ntuplizer/NANO_NANO_1-1016_Friend.root', '/eos/user/f/fsalerno/Data/HOTVR/ttx_ntuplizer/tt_semilepton_MC2018_ntuplizer/NANO_NANO_1-1020_Friend.root']
+File exists.
+Model loaded successfully.
+/eos/user/f/fsalerno/framework/MachineLearning/Training_HOTVR_2018_1_j_in_HVRj/model.h5 exists.
+Read permission for /eos/user/f/fsalerno/framework/MachineLearning/Training_HOTVR_2018_1_j_in_HVRj/model.h5 is granted.
+Write permission for /eos/user/f/fsalerno/framework/MachineLearning/Training_HOTVR_2018_1_j_in_HVRj/model.h5 is granted.
+Execute permission for /eos/user/f/fsalerno/framework/MachineLearning/Training_HOTVR_2018_1_j_in_HVRj/model.h5 is denied.
+/eos/user/f/fsalerno/framework/MachineLearning/Training_HOTVR_2018_1_j_in_HVRj/model.h5
+Because you requested a FJR we assume you want the final hadd. No name specified for the output file, will use tree.root
+Will write selected trees to /eos/user/f/fsalerno/Data/HOTVR/evaluate_j_in_HVRj_1_tt_semilepton_MC2018_topeval/
+Pre-select 11419 entries out of 11419 (100.00%)
+Not copying unknown tree Friends
+Not copying unknown tree Friends
+Processed    10000/   11419 entries, 87.57% (elapsed time   119.1s, curr speed    0.084 kHz, avg speed    0.084 kHz), accepted     2243/   10001 events (22.43%)
+Processed 11419 preselected entries from /eos/user/f/fsalerno/Data/HOTVR/ttx_ntuplizer/tt_semilepton_MC2018_ntuplizer/NANO_NANO_1-1001_Friend.root (11419 entries). Finally selected 2595 entries
+Done /eos/user/f/fsalerno/Data/HOTVR/evaluate_j_in_HVRj_1_tt_semilepton_MC2018_topeval/NANO_NANO_1-1001_Friend_topeval_HOTVR_2_tt_semilepton_MC2018.root
+Pre-select 11410 entries out of 11410 (100.00%)
+Not copying unknown tree Friends
+Not copying unknown tree Friends
+Processed    10000/   11410 entries, 87.64% (elapsed time   103.2s, curr speed    0.097 kHz, avg speed    0.097 kHz), accepted     2253/   10001 events (22.53%)
+Processed 11410 preselected entries from /eos/user/f/fsalerno/Data/HOTVR/ttx_ntuplizer/tt_semilepton_MC2018_ntuplizer/NANO_NANO_1-1005_Friend.root (11410 entries). Finally selected 2594 entries
+Done /eos/user/f/fsalerno/Data/HOTVR/evaluate_j_in_HVRj_1_tt_semilepton_MC2018_topeval/NANO_NANO_1-1005_Friend_topeval_HOTVR_2_tt_semilepton_MC2018.root
+Pre-select 11383 entries out of 11383 (100.00%)
+Not copying unknown tree Friends
+Not copying unknown tree Friends
+Processed    10000/   11383 entries, 87.85% (elapsed time   100.5s, curr speed    0.099 kHz, avg speed    0.099 kHz), accepted     2264/   10001 events (22.64%)
+Processed 11383 preselected entries from /eos/user/f/fsalerno/Data/HOTVR/ttx_ntuplizer/tt_semilepton_MC2018_ntuplizer/NANO_NANO_1-1006_Friend.root (11383 entries). Finally selected 2561 entries
+Done /eos/user/f/fsalerno/Data/HOTVR/evaluate_j_in_HVRj_1_tt_semilepton_MC2018_topeval/NANO_NANO_1-1006_Friend_topeval_HOTVR_2_tt_semilepton_MC2018.root
+Pre-select 11244 entries out of 11244 (100.00%)
+Not copying unknown tree Friends
+Not copying unknown tree Friends
+Processed    10000/   11244 entries, 88.94% (elapsed time    97.4s, curr speed    0.103 kHz, avg speed    0.103 kHz), accepted     2265/   10001 events (22.65%)
+Processed 11244 preselected entries from /eos/user/f/fsalerno/Data/HOTVR/ttx_ntuplizer/tt_semilepton_MC2018_ntuplizer/NANO_NANO_1-1008_Friend.root (11244 entries). Finally selected 2569 entries
+Done /eos/user/f/fsalerno/Data/HOTVR/evaluate_j_in_HVRj_1_tt_semilepton_MC2018_topeval/NANO_NANO_1-1008_Friend_topeval_HOTVR_2_tt_semilepton_MC2018.root
+Pre-select 11493 entries out of 11493 (100.00%)
+Not copying unknown tree Friends
+Not copying unknown tree Friends
+Processed    10000/   11493 entries, 87.01% (elapsed time    98.8s, curr speed    0.101 kHz, avg speed    0.101 kHz), accepted     2213/   10001 events (22.13%)
+Processed 11493 preselected entries from /eos/user/f/fsalerno/Data/HOTVR/ttx_ntuplizer/tt_semilepton_MC2018_ntuplizer/NANO_NANO_1-100_Friend.root (11493 entries). Finally selected 2552 entries
+Done /eos/user/f/fsalerno/Data/HOTVR/evaluate_j_in_HVRj_1_tt_semilepton_MC2018_topeval/NANO_NANO_1-100_Friend_topeval_HOTVR_2_tt_semilepton_MC2018.root
+Pre-select 11281 entries out of 11281 (100.00%)
+Not copying unknown tree Friends
+Not copying unknown tree Friends
+Processed    10000/   11281 entries, 88.64% (elapsed time   106.3s, curr speed    0.094 kHz, avg speed    0.094 kHz), accepted     2268/   10001 events (22.68%)
+Processed 11281 preselected entries from /eos/user/f/fsalerno/Data/HOTVR/ttx_ntuplizer/tt_semilepton_MC2018_ntuplizer/NANO_NANO_1-1010_Friend.root (11281 entries). Finally selected 2570 entries
+Done /eos/user/f/fsalerno/Data/HOTVR/evaluate_j_in_HVRj_1_tt_semilepton_MC2018_topeval/NANO_NANO_1-1010_Friend_topeval_HOTVR_2_tt_semilepton_MC2018.root
+Pre-select 11482 entries out of 11482 (100.00%)
+Not copying unknown tree Friends
+Not copying unknown tree Friends
+Processed    10000/   11482 entries, 87.09% (elapsed time   100.8s, curr speed    0.099 kHz, avg speed    0.099 kHz), accepted     2276/   10001 events (22.76%)
+Processed 11482 preselected entries from /eos/user/f/fsalerno/Data/HOTVR/ttx_ntuplizer/tt_semilepton_MC2018_ntuplizer/NANO_NANO_1-1012_Friend.root (11482 entries). Finally selected 2610 entries
+Done /eos/user/f/fsalerno/Data/HOTVR/evaluate_j_in_HVRj_1_tt_semilepton_MC2018_topeval/NANO_NANO_1-1012_Friend_topeval_HOTVR_2_tt_semilepton_MC2018.root
+Pre-select 11473 entries out of 11473 (100.00%)
+Not copying unknown tree Friends
+Not copying unknown tree Friends
+Processed    10000/   11473 entries, 87.16% (elapsed time   105.6s, curr speed    0.095 kHz, avg speed    0.095 kHz), accepted     2257/   10001 events (22.57%)
+Processed 11473 preselected entries from /eos/user/f/fsalerno/Data/HOTVR/ttx_ntuplizer/tt_semilepton_MC2018_ntuplizer/NANO_NANO_1-1013_Friend.root (11473 entries). Finally selected 2599 entries
+Done /eos/user/f/fsalerno/Data/HOTVR/evaluate_j_in_HVRj_1_tt_semilepton_MC2018_topeval/NANO_NANO_1-1013_Friend_topeval_HOTVR_2_tt_semilepton_MC2018.root
+Pre-select 11239 entries out of 11239 (100.00%)
+Not copying unknown tree Friends
+Not copying unknown tree Friends
+Processed    10000/   11239 entries, 88.98% (elapsed time   105.4s, curr speed    0.095 kHz, avg speed    0.095 kHz), accepted     2302/   10001 events (23.02%)
+Processed 11239 preselected entries from /eos/user/f/fsalerno/Data/HOTVR/ttx_ntuplizer/tt_semilepton_MC2018_ntuplizer/NANO_NANO_1-1016_Friend.root (11239 entries). Finally selected 2568 entries
+Done /eos/user/f/fsalerno/Data/HOTVR/evaluate_j_in_HVRj_1_tt_semilepton_MC2018_topeval/NANO_NANO_1-1016_Friend_topeval_HOTVR_2_tt_semilepton_MC2018.root
+Pre-select 11313 entries out of 11313 (100.00%)
+Not copying unknown tree Friends
+Not copying unknown tree Friends
+Processed    10000/   11313 entries, 88.39% (elapsed time   104.4s, curr speed    0.096 kHz, avg speed    0.096 kHz), accepted     2296/   10001 events (22.96%)
+Processed 11313 preselected entries from /eos/user/f/fsalerno/Data/HOTVR/ttx_ntuplizer/tt_semilepton_MC2018_ntuplizer/NANO_NANO_1-1020_Friend.root (11313 entries). Finally selected 2600 entries
+Done /eos/user/f/fsalerno/Data/HOTVR/evaluate_j_in_HVRj_1_tt_semilepton_MC2018_topeval/NANO_NANO_1-1020_Friend_topeval_HOTVR_2_tt_semilepton_MC2018.root
+Total time 1379.2 sec. to process 113737 events. Rate = 82.5 Hz.
+DONE

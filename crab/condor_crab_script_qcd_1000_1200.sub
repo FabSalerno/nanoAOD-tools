@@ -1,0 +1,16 @@
+Proxy_filename          = x509up
+Proxy_path              = /afs/cern.ch/user/f/fsalerno/private/$(Proxy_filename)
+universe                = vanilla
+x509userproxy           = $(Proxy_path)
+use_x509userproxy       = true
+should_transfer_files   = YES
+when_to_transfer_output = ON_EXIT
+transfer_input_files    = $(Proxy_path)
+environment             = "SCRAM_ARCH=el9_amd64_gcc11"
++JobFlavour             = "nextweek"
+executable              = runner_crab_script_qcd_1000_1200.sh
+arguments               = 
+output                  = condor/output/crab_script_qcd_1000_1200.out
+error                   = condor/error/crab_script_qcd_1000_1200.err
+log                     = condor/log/crab_script_qcd_1000_1200.log
+queue
