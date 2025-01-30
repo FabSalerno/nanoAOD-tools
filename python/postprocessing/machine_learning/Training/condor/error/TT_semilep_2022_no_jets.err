@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "/afs/cern.ch/user/f/fsalerno/CMSSW_13_2_11/src/PhysicsTools/NanoAODTools/python/postprocessing/machine_learning/Training/trainingSet_PF_no_jets.py", line 311, in <module>
-    PFC_toappend    = fill_PFCs(PFCs_dnn=PFC_toappend, 
-NameError: name 'PFC_toappend' is not defined

@@ -1,9 +1,0 @@
-filepath is =====  ['/eos/user/f/fsalerno/Data/PF/topeval/nano_mcRun3_qcd_1000_1200_topeval_PF_qcd_1000_1200.root']
-Because you requested a FJR we assume you want the final hadd. No name specified for the output file, will use tree.root
-Will write selected trees to /eos/user/f/fsalerno/Data/PF/topeval/presel/
-Pre-select 20000 entries out of 20000 (100.00%)
-Processed    10000/   20000 entries, 50.00% (elapsed time    36.1s, curr speed    0.277 kHz, avg speed    0.277 kHz), accepted       13/   10001 events ( 0.13%)
-Processed 20000 preselected entries from /eos/user/f/fsalerno/Data/PF/topeval/nano_mcRun3_qcd_1000_1200_topeval_PF_qcd_1000_1200.root (20000 entries). Finally selected 23 entries
-Done /eos/user/f/fsalerno/Data/PF/topeval/presel/nano_mcRun3_qcd_1000_1200_topeval_PF_qcd_1000_1200_topeval_PF_presel_qcd_1000_1200.root
-Total time 73.6 sec. to process 20000 events. Rate = 271.8 Hz.
-DONE

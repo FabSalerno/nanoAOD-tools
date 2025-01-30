@@ -1,1 +1,0 @@
-python3 trainingSet_PF.py -year 2022 -component TT_semilep_2022 -inFile_to_open /eos/user/f/fsalerno/Data/PF/prova/nano_mcRun3_ttSL_topcand_PF_prova_semilelp.root -nev -1 -path_to_pkl /eos/user/f/fsalerno/framework/MachineLearning/Training_PF_2022_1/pkls/trainingSet_TT_semilep_2022_PF.pkl

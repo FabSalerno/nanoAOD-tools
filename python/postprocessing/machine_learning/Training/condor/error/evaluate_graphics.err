@@ -1,8 +1,0 @@
-Info in <TCanvas::Print>: png file /eos/user/f/fsalerno/framework/MachineLearning/Training_HOTVR_2018_1_standard_old/plots//allDiscrimination_mixed.png has been created
-Info in <TCanvas::Print>: pdf file /eos/user/f/fsalerno/framework/MachineLearning/Training_HOTVR_2018_1_standard_old/plots//allDiscrimination_mixed.pdf has been created
-Info in <TCanvas::Print>: png file /eos/user/f/fsalerno/framework/MachineLearning/Training_HOTVR_2018_1_standard_old/plots//allDiscrimination_resolved.png has been created
-Info in <TCanvas::Print>: pdf file /eos/user/f/fsalerno/framework/MachineLearning/Training_HOTVR_2018_1_standard_old/plots//allDiscrimination_resolved.pdf has been created
-Traceback (most recent call last):
-  File "/afs/cern.ch/user/f/fsalerno/CMSSW_12_5_2/src/PhysicsTools/NanoAODTools/python/postprocessing/machine_learning/Training/evaluate_graphics.py", line 185, in <module>
-    if h_score_mixed_false.Integral(0,100) !=0:
-NameError: name 'h_score_mixed_false' is not defined
