@@ -68,9 +68,9 @@ def sh_writer(year, component, n_PFCs, pt_cut, inFile_to_open, nev, path_to_pkl,
     f.write("cmsenv\n")
     f.write("export XRD_NETWORKSTACK=IPv4\n")
     if select_top_over_threshold:
-        f.write(f"python3 trainingSet_PF.py -year {year} -component {component} -inFile_to_open {inFile_to_open} -nev {nev} -path_to_pkl {path_to_pkl} -select_top_over_threshold -thr {thr} -n {n_PFCs}\n")
+        f.write(f"python3 trainingSet_PF.py -year {year} -component {component} -inFile_to_open {inFile_to_open} -nev {nev} -path_to_pkl {path_to_pkl} -select_top_over_threshold -thr {thr} -n {n_PFCs} -pt {pt_cut}\n")
     else:
-        f.write(f"python3 trainingSet_PF.py -year {year} -component {component} -inFile_to_open {inFile_to_open} -nev {nev} -path_to_pkl {path_to_pkl} -n {n_PFCs}\n")
+        f.write(f"python3 trainingSet_PF.py -year {year} -component {component} -inFile_to_open {inFile_to_open} -nev {nev} -path_to_pkl {path_to_pkl} -n {n_PFCs} -pt {pt_cut}\n")
 
 if not os.path.exists("condor/output"):
     os.makedirs("condor/output")
