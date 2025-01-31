@@ -6,13 +6,6 @@ from PhysicsTools.NanoAODTools.postprocessing.framework.datamodel import Collect
 from PhysicsTools.NanoAODTools.postprocessing.framework.eventloop import Module
 
 
-# score thresholds
-score_thresholds   = "/eos/user/f/fsalerno/framework/MachineLearning/Training_HOTVR_2018_2_final/score_thresholds.json"
- # threshold to select top candidates
-thr                = "0.1%"                                                
-with open(score_thresholds, "r") as fjson:
-    thresholds  = json.load(fjson)
-threshold   = thresholds[thr]["thr"]
 
 
 
