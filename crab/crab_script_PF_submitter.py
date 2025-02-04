@@ -106,12 +106,12 @@ os.popen("cp /tmp/x509up_u" + str(uid) + " /afs/cern.ch/user/" + inituser + "/" 
 dirpath   = "/eos/user/f/fsalerno/Data/PF/"
 
 #component   = "all"
-component  = "ttsl1"
+component  = "TT_inclusive_MC2022"
 #component  = "qcd_1000_1200"
 #component  = "qcd_1200_1500"
 #component  = "qcd_1500_2000"
 #component  = "qcd_1200_1500
-#component  = "tt_mtt-700to1000_MC2018"
+#component  = "tt_mtt-700to1000_MC2018"S
 #component  = "tt_mtt-1000toInf_MC2018"
 #component  = "qcd_ht_1000_MC2018"
 #component  = "qcd_ht_1500_MC2018"

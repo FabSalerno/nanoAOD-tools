@@ -29,11 +29,15 @@ for key in keys:
 
 class event_counter_5_100(Module):
     def __init__(self):
-        self.writeHistFile = True
+        pass
 
-    def beginJob(self, histFile=None, histDirName=None):
-        Module.beginJob(self, histFile, histDirName + "_event_counter_5_per_100")
-        
+    def beginJob(self):
+        pass
+
+    def endJob(self):
+        pass
+
+    def beginFile(self, inputFile, outputFile, inputTree, wrappedOutputTree):        
         self.h_ntops_5_per_100 = {}
         self.h_nevents_5_per_100 = {}
         self.h_nevents_5_per_100_cut_200_pt = {}
@@ -49,12 +53,17 @@ class event_counter_5_100(Module):
             self.h_pt_5_per_100[key] = ROOT.TH1F(f"pt_5_per_100_{key}", f"pt_5_per_100_{key}", 100, 0, 1000)
             self.h_MET_5_per_100[key] = ROOT.TH1F(f"MET_5_per_100_{key}", f"MET_5_per_100_{key}", 100, 200, 800)
             
-            self.addObject(self.h_ntops_5_per_100[key])
-            self.addObject(self.h_nevents_5_per_100[key])
-            self.addObject(self.h_nevents_5_per_100_cut_200_pt[key])
-            self.addObject(self.h_nevents_5_per_100_cut_300_pt[key])
-            self.addObject(self.h_pt_5_per_100[key])
-            self.addObject(self.h_MET_5_per_100[key])
+
+    def endFile(self, inputFile, outputFile, inputTree, wrappedOutputTree):
+        prevdir = ROOT.gDirectory
+        outputFile.cd()
+        for key in keys:
+            self.h_ntops_5_per_100[key].Write() 
+            self.h_nevents_5_per_100[key].Write() 
+            self.h_nevents_5_per_100_cut_200_pt[key].Write()
+            self.h_pt_5_per_100[key].Write()
+            self.h_MET_5_per_100[key].Write()
+        prevdir.cd()
 
     def analyze(self, event):
         """Process event, return True (go to next module) or False (fail, go to next event)"""

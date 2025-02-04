@@ -249,7 +249,6 @@ class nanoTopevaluate_MultiScore(Module):
         ngoodfatjets          = len(goodfatjets)
 
         PFCands               = Collection(event,"PFCands")
-        sorted_PFCands        = sorted(PFCands, key=lambda particle: particle.pt, reverse=True)
         top_PFC_idx           = Collection(event,"Indexes")
         #n_PFCs                = 20
         tophighpt             = Collection(event, "TopMixed")
@@ -265,7 +264,7 @@ class nanoTopevaluate_MultiScore(Module):
          
 
         for i, top in enumerate(tophighpt):
-            sorted_PFCs=[]
+            PFCs=[]
             indexes=[]
             for idx in top_PFC_idx:    
                 #print(idx.idxPFC)
@@ -277,13 +276,13 @@ class nanoTopevaluate_MultiScore(Module):
             start_index = indexes.index(-(i+1))
             end_index = indexes.index(-(i+2))
             idx_to_append = indexes[start_index+1:end_index]
-            for particle in sorted_PFCands: #ciclo sulle particles
+            for particle in PFCands: #ciclo sulle particles
                 if particle.Idx in idx_to_append:
-                    sorted_PFCs.append(particle)
+                    PFCs.append(particle)
             
             PFC_dnn    = fill_PFCs(n_PFCs=n_PFCs,
                                     PFCs_dnn=PFC_dnn, 
-                                    PFCs=sorted_PFCs, 
+                                    PFCs=PFCs, 
                                     idx_top=i,
                                     pt_top=top.pt,
                                     eta_top=top.eta,

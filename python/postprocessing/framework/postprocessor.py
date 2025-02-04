@@ -160,10 +160,9 @@ class PostProcessor:
                 inFile = ROOT.TFile.Open(fname)
 
             # get input tree
-            if type(inFile.Get("Friends")).__name__ == 'TTree':
+            inTree = inFile.Get("Events")
+            if inTree is None:
                 inTree = inFile.Get("Friends")
-            else:
-                inTree = inFile.Get("Events")
             nEntries = min(inTree.GetEntries() -
                            self.firstEntry, self.maxEntries)
             totEntriesRead += nEntries

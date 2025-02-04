@@ -19,7 +19,7 @@ for mod in mods:
         if os.path.isfile(f"{path_to_model_folder}/model_{key}.h5"):
             keys.append(key)
 
-thr                = "1%"  
+thr                = "5%"  
 threshold = {}
 for key in keys:    
     score_thresholds = f"/eos/user/f/fsalerno/framework/MachineLearning/thresholds/score_thresholds_{key}.json"                                          
@@ -27,43 +27,34 @@ for key in keys:
         thresholds  = json.load(fjson)
     threshold[key]   = thresholds[thr]["thr"]
 
-class event_counter_1_100(Module):
+class event_counter_5_100(Module):
     def __init__(self):
-        pass
+        self.writeHistFile = True
 
-    def beginJob(self):
-        pass
-
-    def endJob(self):
-        pass
-
-    def beginFile(self, inputFile, outputFile, inputTree, wrappedOutputTree): 
+    def beginJob(self, histFile=None, histDirName=None):
+        Module.beginJob(self, histFile, histDirName + "_event_counter_5_per_100")
         
-        self.h_ntops_1_per_100 = {}
-        self.h_nevents_1_per_100 = {}
-        self.h_nevents_1_per_100_cut_200_pt = {}
-        self.h_nevents_1_per_100_cut_300_pt = {}
-        self.h_pt_1_per_100 = {}
-        self.h_MET_1_per_100 = {}
+        self.h_ntops_5_per_100 = {}
+        self.h_nevents_5_per_100 = {}
+        self.h_nevents_5_per_100_cut_200_pt = {}
+        self.h_nevents_5_per_100_cut_300_pt = {}
+        self.h_pt_5_per_100 = {}
+        self.h_MET_5_per_100 = {}
 
         for key in keys:
-            self.h_ntops_1_per_100[key] = ROOT.TH1F(f"ntops_1_per_100_{key}",  f"ntops_1_per_100_{key}", 6, 0, 6)
-            self.h_nevents_1_per_100[key] = ROOT.TH1F(f"nevents_1_per_100_{key}", f"nevents_1_per_100_{key}", 6, 0, 6)
-            self.h_nevents_1_per_100_cut_200_pt[key] = ROOT.TH1F(f"nevents_1_per_100_cut_200_pt_{key}", f"nevents_1_per_100_cut_200_pt_{key}", 6, 0, 6)
-            self.h_nevents_1_per_100_cut_300_pt[key] = ROOT.TH1F(f"nevents_1_per_100_cut_300_pt_{key}", f"nevents_1_per_100_cut_300_pt_{key}", 6, 0, 6)
-            self.h_pt_1_per_100[key] = ROOT.TH1F(f"pt_1_per_100_{key}", f"pt_1_per_100_{key}", 100, 0, 1000)
-            self.h_MET_1_per_100[key] = ROOT.TH1F(f"MET_1_per_100_{key}", f"MET_1_per_100_{key}", 100, 200, 800)
+            self.h_ntops_5_per_100[key] = ROOT.TH1F(f"ntops_5_per_100_{key}",  f"ntops_5_per_100_{key}", 6, 0, 6)
+            self.h_nevents_5_per_100[key] = ROOT.TH1F(f"nevents_5_per_100_{key}", f"nevents_5_per_100_{key}", 6, 0, 6)
+            self.h_nevents_5_per_100_cut_200_pt[key] = ROOT.TH1F(f"nevents_5_per_100_cut_200_pt_{key}", f"nevents_5_per_100_cut_200_pt_{key}", 6, 0, 6)
+            self.h_nevents_5_per_100_cut_300_pt[key] = ROOT.TH1F(f"nevents_5_per_100_cut_300_pt_{key}", f"nevents_5_per_100_cut_300_pt_{key}", 6, 0, 6)
+            self.h_pt_5_per_100[key] = ROOT.TH1F(f"pt_5_per_100_{key}", f"pt_5_per_100_{key}", 100, 0, 1000)
+            self.h_MET_5_per_100[key] = ROOT.TH1F(f"MET_5_per_100_{key}", f"MET_5_per_100_{key}", 100, 200, 800)
             
-    def endFile(self, inputFile, outputFile, inputTree, wrappedOutputTree):
-        prevdir = ROOT.gDirectory
-        outputFile.cd()
-        for key in keys:
-            self.h_ntops_1_per_100[key].Write() 
-            self.h_nevents_1_per_100[key].Write() 
-            self.h_nevents_1_per_100_cut_200_pt[key].Write()
-            self.h_pt_1_per_100[key].Write()
-            self.h_MET_1_per_100[key].Write()
-        prevdir.cd()
+            self.addObject(self.h_ntops_5_per_100[key])
+            self.addObject(self.h_nevents_5_per_100[key])
+            self.addObject(self.h_nevents_5_per_100_cut_200_pt[key])
+            self.addObject(self.h_nevents_5_per_100_cut_300_pt[key])
+            self.addObject(self.h_pt_5_per_100[key])
+            self.addObject(self.h_MET_5_per_100[key])
 
     def analyze(self, event):
         """Process event, return True (go to next module) or False (fail, go to next event)"""
@@ -80,19 +71,19 @@ class event_counter_1_100(Module):
                     TopScore = getattr(top, top_score_key) 
                 if TopScore>= threshold[key]:
                     event = 1
-                    self.h_ntops_1_per_100[key].Fill(3)
-                    self.h_pt_1_per_100[key].Fill(top.pt)
+                    self.h_ntops_5_per_100[key].Fill(2)
+                    self.h_pt_5_per_100[key].Fill(top.pt)
                     if top.pt>=200:
                         event_200 = 1
                     if top.pt>=300:
                         event_300 = 1
             
             if event == 1:
-                self.h_nevents_1_per_100[key].Fill(3)
-                self.h_MET_1_per_100[key].Fill(met.pt)
+                self.h_nevents_5_per_100[key].Fill(2)
+                self.h_MET_5_per_100[key].Fill(met.pt)
             if event_200 == 1:
-                self.h_nevents_1_per_100_cut_200_pt[key].Fill(3)
+                self.h_nevents_5_per_100_cut_200_pt[key].Fill(2)
             if event_300 == 1:
-                self.h_nevents_1_per_100_cut_300_pt[key].Fill(3)
+                self.h_nevents_5_per_100_cut_300_pt[key].Fill(2)
         
         return True

@@ -28,15 +28,14 @@ for mod in mods:
 
 class histos_eval(Module):
     def __init__(self):
+        self.writeHistFile=True
         pass
 
-    def beginJob(sel):
-        pass
-
-    def endJob(self):
-        pass
-    
-    def beginFile(self, inputFile, outputFile, inputTree, wrappedOutputTree):
+    def beginJob(self,histFile,histDirName):
+        
+        #self.objs = []
+        #print("\n e ora?", dir(self))
+        Module.beginJob(self,histFile,histDirName+"_evaluation")
         self.h_score_top_mixed_true = {}
         self.h_score_top_mixed_false_qcd = {}
         self.h_score_top_mixed_false_other = {}
@@ -93,38 +92,35 @@ class histos_eval(Module):
             self.h_score_3j0fj_false[key] = ROOT.TH1F(f"score_3j0fj_false_{key}", f"score_3j0fj_false_{key}", 100, 0, 1)
             self.h_score_2j1fj_false[key] = ROOT.TH1F(f"score_2j1fj_false_{key}", f"score_2j1fj_false_{key}", 100, 0, 1)
 
-    def endFile(self, inputFile, outputFile, inputTree, wrappedOutputTree):
-        prevdir = ROOT.gDirectory
-        outputFile.cd()
-        for key in keys:
-            self.h_score_top_mixed_true[key].Write()
-            self.h_score_top_mixed_false_qcd[key].Write()
-            self.h_score_top_mixed_false_other[key].Write()
-            self.h_score_top_mixed_false_all[key].Write()
-            self.h_score_top_mixed_true_cut_200_pt[key].Write()
-            self.h_score_top_mixed_false_qcd_cut_200_pt[key].Write()
-            self.h_score_top_mixed_false_other_cut_200_pt[key].Write()
-            self.h_score_top_mixed_false_all_cut_200_pt[key].Write()
-            self.h_score_top_mixed_true_cut_300_pt[key].Write()
-            self.h_score_top_mixed_false_qcd_cut_300_pt[key].Write()
-            self.h_score_top_mixed_false_other_cut_300_pt[key].Write()
-            self.h_score_top_mixed_false_all_cut_300_pt[key].Write()
-            self.h_pt_top_mixed_true[key].Write()
-            self.h_pt_top_mixed_false_qcd[key].Write()
-            self.h_pt_top_mixed_false_other[key].Write()
-            self.h_pt_top_mixed_false_all[key].Write()
-            self.h_mass_top_mixed_true[key].Write()
-            self.h_mass_top_mixed_false_qcd[key].Write()
-            self.h_mass_top_mixed_false_other[key].Write()
-            self.h_mass_top_mixed_false_all[key].Write()
-            self.h_ntops_tot[key].Write()
-            self.h_score_3j1fj_true[key].Write()
-            self.h_score_3j0fj_true[key].Write()
-            self.h_score_2j1fj_true[key].Write()
-            self.h_score_3j1fj_false[key].Write()
-            self.h_score_3j0fj_false[key].Write()
-            self.h_score_2j1fj_false[key].Write() 
-        prevdir.cd()
+            # Add histograms to the framework
+            self.addObject(self.h_score_top_mixed_true[key])
+            self.addObject(self.h_score_top_mixed_false_qcd[key])
+            self.addObject(self.h_score_top_mixed_false_other[key])
+            self.addObject(self.h_score_top_mixed_false_all[key])
+            self.addObject(self.h_score_top_mixed_true_cut_200_pt[key])
+            self.addObject(self.h_score_top_mixed_false_qcd_cut_200_pt[key])
+            self.addObject(self.h_score_top_mixed_false_other_cut_200_pt[key])
+            self.addObject(self.h_score_top_mixed_false_all_cut_200_pt[key])
+            self.addObject(self.h_score_top_mixed_true_cut_300_pt[key])
+            self.addObject(self.h_score_top_mixed_false_qcd_cut_300_pt[key])
+            self.addObject(self.h_score_top_mixed_false_other_cut_300_pt[key])
+            self.addObject(self.h_score_top_mixed_false_all_cut_300_pt[key])
+            self.addObject(self.h_pt_top_mixed_true[key])
+            self.addObject(self.h_pt_top_mixed_false_qcd[key])
+            self.addObject(self.h_pt_top_mixed_false_other[key])
+            self.addObject(self.h_pt_top_mixed_false_all[key])
+            self.addObject(self.h_mass_top_mixed_true[key])
+            self.addObject(self.h_mass_top_mixed_false_qcd[key])
+            self.addObject(self.h_mass_top_mixed_false_other[key])
+            self.addObject(self.h_mass_top_mixed_false_all[key])
+            self.addObject(self.h_ntops_tot[key])
+            self.addObject(self.h_score_3j1fj_true[key])
+            self.addObject(self.h_score_3j0fj_true[key])
+            self.addObject(self.h_score_2j1fj_true[key])
+            self.addObject(self.h_score_3j1fj_false[key])
+            self.addObject(self.h_score_3j0fj_false[key])
+            self.addObject(self.h_score_2j1fj_false[key])
+
         
 
     def analyze(self, event):
