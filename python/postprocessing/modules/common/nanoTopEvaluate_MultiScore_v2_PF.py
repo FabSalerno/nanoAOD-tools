@@ -174,23 +174,27 @@ def fill_PFCs(n_PFCs, PFCs_dnn, PFCs, idx_top, pt_top, eta_top, phi_top, M_top):
 # Leo's models #
 # path_to_model_folder    = "/afs/cern.ch/user/l/lfavilla/CMSSW_12_6_0/src/PhysicsTools/NanoAODTools/python/postprocessing/my_analysis/my_framework/MLstudies/Training/Train/saved_models"
 # path_to_model_folder    = "%s/src/PhysicsTools/NanoAODTools/python/postprocessing/my_analysis/my_framework/MLstudies/Training/Train/saved_models" % os.environ["CMSSW_BASE"]
-path_to_model_folder    = "/eos/user/f/fsalerno/framework/MachineLearning/models/"
+#path_to_model_folder    = "/eos/user/f/fsalerno/framework/MachineLearning/models/"
 folder_model_antimo     = "%s/src/PhysicsTools/NanoAODTools/python/postprocessing/data/dict_tresholds/" % os.environ["CMSSW_BASE"]
 antimo_model_name_H     = "model.h5"#"DNN_withtopmass_phase2.h5"
 antimo_model_name_L     = "DNN_phase1_test_lowpt_DNN.h5"
 # model_highpt_p2         = tf.keras.models.load_model(folder_model_antimo+model2_name)
 
 # keys                    = ["base", "base_pt_g250", "base_pt_l250", "base_3j0fj", "base_pt_l250_3j0fj", "pt_flatten", "pt_flatten_pt_g250", "pt_flatten_pt_l250"]
-mods                    = ["CNN","CNN_2D","CNN_conc","CNN_2D_conc","transformer","LSTM","LSTM_DNN","CNN_2D_LSTM","CNN_2D_LSTM_conc","CNN_2D_LSTM","TROTA"]
-cuts                    = ["","_0_pt","_200_pt","_300_pt"]
-n_PFCs                  = 20
-models                  = {}
+
 # models["base"]          = tf.keras.models.load_model(f"{path_to_model_folder}/model_base.h5")
 # print(path_to_model_folder+"model_base2.h5")
 
 #models["base"]         = tf.keras.models.load_model(path_to_model_folder+"model.h5")
 # models["score2"]        = tf.keras.models.load_model(folder_model_antimo+antimo_model_name_H)
-models["scoreDNN"]      = tf.keras.models.load_model(folder_model_antimo+antimo_model_name_L)
+
+
+path_to_model_folder    = "/eos/user/f/fsalerno/framework/MachineLearning/models/"
+mods                    = ["CNN_2D","CNN_2D_LSTM","CNN_2D_2","CNN_2D_LSTM_2","TROTA","EWC_CNN_2D_fine_tuning","EWC_CNN_2D_LSTM_fine_tuning","LwF_CNN_2D_fine_tuning","LwF_CNN_2D_LSTM_fine_tuning","layer_freeze_CNN_2D_fine_tuning","layer_freeze_CNN_2D_LSTM_fine_tuning"]
+cuts                    = ["_0_pt",]
+n_PFCs                  = 60
+
+models                  = {}
 
 keys=[]
 for mod in mods:
@@ -198,11 +202,14 @@ for mod in mods:
         key=f"{n_PFCs}_{mod}{cut}"
         if os.path.isfile(f"{path_to_model_folder}/model_{key}.h5"):
             keys.append(key)
+keys.append("TROTA")
+
 
 for key in keys:
     if os.path.isfile(f"{path_to_model_folder}/model_{key}.h5"):
         models[key]         = tf.keras.models.load_model(f"{path_to_model_folder}/model_{key}.h5")
 
+models["scoreDNN"]      = tf.keras.models.load_model(folder_model_antimo+antimo_model_name_L)
 
 year=2022
 

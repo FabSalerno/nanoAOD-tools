@@ -7,9 +7,9 @@ import os
 # score thresholds
 
 path_to_model_folder    = "/eos/user/f/fsalerno/framework/MachineLearning/models/"
-mods                    = ["CNN","CNN_2D","CNN_conc","CNN_2D_conc","transformer","LSTM","LSTM_DNN","CNN_2D_LSTM","CNN_2D_LSTM_conc","TROTA"]
-cuts                    = ["","_0_pt","_200_pt","_300_pt"]
-n_PFCs                  = 20
+mods                    = ["CNN_2D","CNN_2D_LSTM"]
+cuts                    = ["_0_pt",]
+n_PFCs                  = 60
 models                  = {}
 
 keys=[]

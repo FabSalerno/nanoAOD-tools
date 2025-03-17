@@ -34,6 +34,7 @@ class GenPart_MomFirstCp(Module):
     def beginFile(self, inputFile, outputFile, inputTree, wrappedOutputTree):
         self.out = wrappedOutputTree
         self.out.branch("GenPart_genPartIdxMother_prompt","I", lenVar="nGenPart")
+        self.out.branch("GenPart_genPartIdx","I", lenVar="nGenPart")
 
     def endFile(self, inputFile, outputFile, inputTree, wrappedOutputTree):
         pass
@@ -51,8 +52,10 @@ class GenPart_MomFirstCp(Module):
             flavourGenPart= allGenPart
         
         momIdx2=[]
+        partIdx=[]
 
-        for j in allGenPart:
+        for idx_j, j in enumerate(allGenPart):
+            partIdx.append(idx_j)
             if j in flavourGenPart:
                 if j.genPartIdxMother>0: #se è -1 non ha madre, se è 0 è il top, altrimenti ha lo step a cui è stato prodotto (la posizione della madre nel vettore degli id che riproduce step by step)
                     if genpart[j.genPartIdxMother].pdgId!=j.pdgId: #se l'id della particella (tra i sapori selezionati) è diversa da quella della madre
@@ -73,6 +76,7 @@ class GenPart_MomFirstCp(Module):
 
 
         self.out.fillBranch("GenPart_genPartIdxMother_prompt", momIdx2 ) #delle particelle che identifica come prompt salva la madre
+        self.out.fillBranch("GenPart_genPartIdx", partIdx )
         #t1 = datetime.now()  
         #print("GenPart_momFirstCP module time :", t1-t0)
         return True

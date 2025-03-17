@@ -8,7 +8,7 @@ from PhysicsTools.NanoAODTools.postprocessing.framework.eventloop import Module
 from PhysicsTools.NanoAODTools.postprocessing.tools import *
 
     
-class Mtt_cut_gen_lvl(Module):
+class pt_cut_top_gen_lvl(Module):
     def __init__(self):
         pass
     def beginJob(self):
@@ -22,8 +22,8 @@ class Mtt_cut_gen_lvl(Module):
     def analyze(self, event):
         save = False
         genpart = Collection(event, "GenPart")
-        tops = list(filter(lambda x : int(x.pdgId)==6, genpart))
-        antitops = list(filter(lambda x : int(x.pdgId)==-6, genpart))
+        tops = list(filter(lambda x : int(x.pdgId)==6 and int(x.hadronicTop)==1, genpart))
+        antitops = list(filter(lambda x : int(x.pdgId)==-6 and int(x.hadronicTop)==1, genpart))
         n_tops = len(tops)
         n_antitops = len(antitops)
         #print("event is ",event.event)
@@ -55,8 +55,8 @@ class Mtt_cut_gen_lvl(Module):
                     antitop.SetPtEtaPhiM(antit.pt, antit.eta, antit.phi, antit.mass)
                 
         
-            Mtt = (top+antitop).M()
-            if Mtt>=700 and Mtt<=1000:
+            
+            if top.pt>400 or antitop.pt>400:
                 save = True
             else:
                 save = False
