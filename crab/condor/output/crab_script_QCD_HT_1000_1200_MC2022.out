@@ -1,0 +1,4 @@
+filepath is =====  ['/eos/user/f/fsalerno/Data/PF/nano_mcRun3_QCD_HT_1000_1200_MC2022.root']
+Because you requested a FJR we assume you want the final hadd. No name specified for the output file, will use tree.root
+Will write selected trees to /eos/user/f/fsalerno/Data/PF/topcand_full_Mtt_700/
+Pre-select 30000 entries out of 30000 (100.00%)

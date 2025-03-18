@@ -1,34 +1,27 @@
 from WMCore.Configuration import Configuration
-from CRABClient.UserUtilities import config, getUsernameFromSiteDB
 
 config = Configuration()
-
-config.section_("General")
-config.General.requestName = 'NanoPost1'
-config.General.transferLogs = True
-config.section_("JobType")
+config.section_('General')
+config.General.requestName = 'TT_inclusive_2022_topcand_hadd'
+config.General.transferLogs=True
+config.section_('JobType')
 config.JobType.pluginName = 'Analysis'
 config.JobType.psetName = 'PSet.py'
+config.JobType.maxJobRuntimeMin = 2700
 config.JobType.scriptExe = 'crab_script.sh'
-# hadd nano will not be needed once nano tools are in cmssw
-config.JobType.inputFiles = ['crab_script.py', '../scripts/haddnano.py']
-config.JobType.sendPythonFolder = True
-config.section_("Data")
-config.Data.inputDataset = '/DYJetsToLL_1J_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIFall17NanoAOD-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/NANOAODSIM'
-#config.Data.inputDBS = 'phys03'
-config.Data.inputDBS = 'global'
+#config.JobType.inputFiles = ['crab_script.py','../scripts/haddnano.py', '../scripts/keep_and_drop.txt', '../../../install_cmssw.sh']
+#config.JobType.inputFiles = ['crab_script.py', '../scripts/keep_and_drop.txt']
+config.JobType.inputFiles = ['crab_script.py','../scripts/haddnano.py', '../scripts/keep_and_drop.txt']
+#config.JobType.sendVenvFolder = True
+config.section_('Data')
+config.Data.inputDataset = '/TT_TuneCP5_13p6TeV_powheg-pythia8/fsalerno-TT_inclusive_2022-0fa328e40e38f44cd311b92489b92b5b/USER'
+config.Data.allowNonValidInputDataset = True
+config.Data.inputDBS = 'phys03'
 config.Data.splitting = 'FileBased'
-#config.Data.splitting = 'EventAwareLumiBased'
-config.Data.unitsPerJob = 2
-config.Data.totalUnits = 10
-
-config.Data.outLFNDirBase = '/store/user/%s/NanoPost' % (
-    getUsernameFromSiteDB())
-config.Data.publication = False
-config.Data.outputDatasetTag = 'NanoTestPost'
-config.section_("Site")
-config.Site.storageSite = "T2_DE_DESY"
-
-#config.Site.storageSite = "T2_CH_CERN"
-# config.section_("User")
-#config.User.voGroup = 'dcms'
+config.Data.unitsPerJob = 1
+config.Data.outLFNDirBase = '/store/user/%s/%s' % ('fsalerno', 'topcand')
+config.Data.publication = True
+config.Data.publishDBS = 'phys03'
+config.Data.outputDatasetTag = 'TT_inclusive_2022_topcand_hadd'
+config.section_('Site')
+config.Site.storageSite = 'T2_IT_Pisa'

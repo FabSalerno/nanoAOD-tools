@@ -1,0 +1,7 @@
+Because you requested a FJR we assume you want the final hadd. No name specified for the output file, will use tree.root
+Will write selected trees to /eos/user/f/fsalerno/Data/PF/topcand_prova/
+Pre-select 10000 entries out of 10000 (100.00%)
+Processed 10000 preselected entries from /eos/user/f/fsalerno/Data/PF/nano_mcRun3_TT_inclusive_MC2022.root (10000 entries). Finally selected 942 entries
+Done /eos/user/f/fsalerno/Data/PF/topcand_prova/nano_mcRun3_TT_inclusive_MC2022_topcand_PF_Mtt_700_1000.root
+Total time 167.6 sec. to process 10000 events. Rate = 59.7 Hz.
+DONE
