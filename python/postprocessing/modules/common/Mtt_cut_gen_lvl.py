@@ -9,7 +9,9 @@ from PhysicsTools.NanoAODTools.postprocessing.tools import *
 
     
 class Mtt_cut_gen_lvl(Module):
-    def __init__(self):
+    def __init__(self, minMtt=700, maxMtt=1000):
+        self.minMtt = minMtt
+        self.maxMtt = maxMtt
         pass
     def beginJob(self):
         pass
@@ -56,7 +58,7 @@ class Mtt_cut_gen_lvl(Module):
                 
         
             Mtt = (top+antitop).M()
-            if Mtt>=700 and Mtt<=1000:
+            if Mtt>=self.minMtt and self.maxMtt<=self.maxMtt:
                 save = True
             else:
                 save = False
