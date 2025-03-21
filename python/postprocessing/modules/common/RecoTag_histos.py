@@ -17,7 +17,7 @@ class Efficiency_plot(Module):
     def beginJob(self, histFile=None, histDirName=None):
         Module.beginJob(self, histFile, histDirName)
 
-        self.keys = ["60_CNN_2D_0_pt","60_CNN_2D_LSTM_0_pt","60_CNN_2D_2_0_pt","60_CNN_2D_LSTM_2_0_pt"]
+        self.keys = ["60_CNN_2D_0_pt","60_CNN_2D_LSTM_0_pt","60_CNN_2D_2_0_pt","60_CNN_2D_LSTM_2_0_pt","TROTA","EWC_CNN_2D_fine_tuning","EWC_CNN_2D_LSTM_fine_tuning","LwF_CNN_2D_fine_tuning","LwF_CNN_2D_LSTM_fine_tuning","layer_freeze_CNN_2D_fine_tuning","layer_freeze_CNN_2D_LSTM_fine_tuning"]
         self.h_recoNumber_merged = ROOT.TH1F('h_recoNumber_merged', 'h_recoNumber_merged', 20, 0, 1000)
         self.h_recoNumber_mixed = {}
         for key in self.keys:
@@ -30,6 +30,7 @@ class Efficiency_plot(Module):
         self.h_recoTagNumber_mixed = {}
         for key in self.keys:
             self.h_recoTagNumber_mixed[key] = ROOT.TH1F(f'h_recoTagNumber_mixed_{key}', f'h_recoTagNumber_mixed_{key}', 20, 0, 1000)
+            self.h_mass_resolution_number_mixed[key] = ROOT.TH1F(f'h_mass_resolution_number_mixed_{key}', f'h_mass_resolution_number_mixed_{key}', 20, -1, 1)
         self.h_recoTagNumber_resolved = ROOT.TH1F('h_recoTagNumber_resolved', 'h_recoTagNumber_resolved', 20, 0, 1000)
 
         self.addObject(self.h_recoNumber_merged)
@@ -42,6 +43,7 @@ class Efficiency_plot(Module):
         self.addObject(self.h_recoTagNumber_merged_Antimo_thr)
         for key in self.keys:
             self.addObject(self.h_recoTagNumber_mixed[key])
+            self.addObject(self.h_mass_resolution_number_mixed[key])
         self.addObject(self.h_recoTagNumber_resolved)
 
     def best_top_mixed(self,tops_mixed,key):
@@ -171,6 +173,7 @@ class Efficiency_plot(Module):
         for key in self.keys:
             if match_mixed[key]:
                 self.h_recoNumber_mixed[key].Fill(hadr_top_gen_matched_mixed[key].pt)
+                self.h_mass_resolution_number_mixed[key].Fill((hadr_top_gen_matched_mixed[key].mass-best_top_mixed[key].mass)/hadr_top_gen_matched_mixed[key].mass)
                 attr_name = f"TopScore_{key}"
                 if getattr(best_top_mixed[key], attr_name)>threshold[key]:
                     self.h_recoTagNumber_mixed[key].Fill(hadr_top_gen_matched_mixed[key].pt)

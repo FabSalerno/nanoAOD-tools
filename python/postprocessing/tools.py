@@ -268,9 +268,21 @@ def top3j1fj(fj, j0, j1, j2, dr0=None, dr1=None, dr2=None):
 
 
 def get_jet(jets):
-    return list(filter(lambda x : x.jetId and x.pt>25 , jets))
+    goodjet = list(filter(lambda x : x.jetId and x.pt>25 , jets))
+    idx_good = 0
+    for idx_jet in range(len(jets)):
+        if jets[idx_jet] in goodjet:
+            goodjet[idx_good].JetIdx = idx_jet
+            idx_good += 1
+    return goodjet
 def get_fatjet(fatjets):
-    return list(filter(lambda x : x.jetId , fatjets))###
+    goodfatjets = list(filter(lambda x : x.jetId , fatjets))
+    idx_good = 0
+    for idx_fj in range(len(fatjets)):
+        if fatjets[idx_fj] in goodfatjets:
+            goodfatjets[idx_good].FatJetIdx = idx_fj
+            idx_good += 1
+    return goodfatjets###
 def presel(jets, fatjets): #returns 2 collections of jets and fatjets
     goodjets = get_jet(jets)
     goodfatjets = get_fatjet(fatjets)
@@ -402,3 +414,6 @@ def extractTH1(file,histname,setdir=True):
       file.Close()
   return hist
 
+def is_daughter(mother, daughter):
+    if daughter.genPartIdxMother==mother.Idx and daughter.pdgId!=mother.pdgId:
+        return True

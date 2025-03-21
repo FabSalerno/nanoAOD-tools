@@ -197,9 +197,9 @@ class nanoTopcand(Module):
                     top_p4 = lowpt_top(j0, j1, j2)
                     if top_p4.Pt()<pt_cut_low:
                         ntoplowpt+=1
-                        toplow_idxjet0.append(idx_j0)
-                        toplow_idxjet1.append(idx_j1)
-                        toplow_idxjet2.append(idx_j2)
+                        toplow_idxjet0.append(j0.JetIdx)
+                        toplow_idxjet1.append(j1.JetIdx)
+                        toplow_idxjet2.append(j2.JetIdx)
                         toplow_pt_.append(top_p4.Pt())
                         toplow_eta_.append(top_p4.Eta())
                         toplow_phi_.append(top_p4.Phi())
@@ -217,9 +217,9 @@ class nanoTopcand(Module):
                         top_p4 = highpt_top(j0=j0, j1=j1, j2=None, fj=fj)
                         if top_p4.Pt()>pt_cut_high:
                             ntophighpt += 1
-                            tophigh_idxfatjet.append(idx_fj)
-                            tophigh_idxjet0.append(idx_j0)
-                            tophigh_idxjet1.append(idx_j1)
+                            tophigh_idxfatjet.append(fj.FatJetIdx)
+                            tophigh_idxjet0.append(j0.JetIdx)
+                            tophigh_idxjet1.append(j1.JetIdx)
                             tophigh_idxjet2.append(-1)
                             tophigh_pt_.append(top_p4.Pt())
                             tophigh_eta_.append(top_p4.Eta())
@@ -228,13 +228,13 @@ class nanoTopcand(Module):
                             tophigh_category.append(2)
                             #loop sulle particelle, conserva gli indici delle particelle presenti nei jet e i fatjet usati per la definizone dei top
                             for particle in PFCands:
-                                if idx_j0==particle.JetIdx:
+                                if j0.JetIdx==particle.JetIdx:
                                     tophigh_idxPFC.append(particle.Idx)
                                     n_idxPFC+=1
-                                elif idx_j1==particle.JetIdx:
+                                elif j1.JetIdx==particle.JetIdx:
                                     tophigh_idxPFC.append(particle.Idx)
                                     n_idxPFC+=1
-                                elif idx_fj==particle.FatJetIdx:
+                                elif fj.FatJetIdx==particle.FatJetIdx:
                                     tophigh_idxPFC.append(particle.Idx) 
                                     n_idxPFC+=1         
                             #finita la lista per un top, per separarlo dal successivo inserisco l'opposto del numero di top fin'ora visti nell'evento                     
@@ -263,9 +263,9 @@ class nanoTopcand(Module):
                         if top_p4.Pt()>pt_cut_high:
                             ntophighpt += 1
                             tophigh_idxfatjet.append(-1)
-                            tophigh_idxjet0.append(idx_j0)
-                            tophigh_idxjet1.append(idx_j1)
-                            tophigh_idxjet2.append(idx_j2)
+                            tophigh_idxjet0.append(j0.JetIdx)
+                            tophigh_idxjet1.append(j1.JetIdx)
+                            tophigh_idxjet2.append(j2.JetIdx)
                             tophigh_pt_.append(top_p4.Pt())
                             tophigh_eta_.append(top_p4.Eta())
                             tophigh_phi_.append(top_p4.Phi())
@@ -273,15 +273,15 @@ class nanoTopcand(Module):
                             tophigh_category.append(1)
                             for particle in PFCands:
                                 #print("\nsorted",particle.pt)
-                                #print(particle.JetIdx,"j0", idx_j0,"j1", idx_j1,"j2", idx_j2)
+                                #print(particle.JetIdx,"j0", j0.JetIdx,"j1", idx_j1,"j2", idx_j2)
                                 #print("particle_idx",particle.Idx)
-                                if idx_j0==particle.JetIdx:
+                                if j0.JetIdx==particle.JetIdx:
                                     tophigh_idxPFC.append(particle.Idx)
                                     n_idxPFC+=1
-                                elif idx_j1==particle.JetIdx:
+                                elif j1.JetIdx==particle.JetIdx:
                                     tophigh_idxPFC.append(particle.Idx)
                                     n_idxPFC+=1
-                                elif idx_j2==particle.JetIdx:
+                                elif j2.JetIdx==particle.JetIdx:
                                     tophigh_idxPFC.append(particle.Idx)
                                     n_idxPFC+=1                                
                                 #print("idxPFC",tophigh_idxPFC_3j0fj)
@@ -310,26 +310,26 @@ class nanoTopcand(Module):
                             top_p4 = highpt_top(j0=j0, j1=j1, j2=j2, fj=fj)
                             if top_p4.Pt()>pt_cut_high:
                                 ntophighpt += 1
-                                tophigh_idxfatjet.append(idx_fj)
-                                tophigh_idxjet0.append(idx_j0)
-                                tophigh_idxjet1.append(idx_j1)
-                                tophigh_idxjet2.append(idx_j2)
+                                tophigh_idxfatjet.append(fj.FatJetIdx)
+                                tophigh_idxjet0.append(j0.JetIdx)
+                                tophigh_idxjet1.append(j1.JetIdx)
+                                tophigh_idxjet2.append(j2.JetIdx)
                                 tophigh_pt_.append(top_p4.Pt())
                                 tophigh_eta_.append(top_p4.Eta())
                                 tophigh_phi_.append(top_p4.Phi())
                                 tophigh_mass_.append(top_p4.M())
                                 tophigh_category.append(0)
                                 for particle in PFCands:
-                                    if idx_j0==particle.JetIdx:
+                                    if j0.JetIdx==particle.JetIdx:
                                         tophigh_idxPFC.append(particle.Idx)
                                         n_idxPFC+=1
-                                    elif idx_j1==particle.JetIdx:
+                                    elif j1.JetIdx==particle.JetIdx:
                                         tophigh_idxPFC.append(particle.Idx)
                                         n_idxPFC+=1
-                                    elif idx_j2==particle.JetIdx:
+                                    elif j2.JetIdx==particle.JetIdx:
                                         tophigh_idxPFC.append(particle.Idx) 
                                         n_idxPFC+=1 
-                                    elif idx_fj==particle.FatJetIdx:
+                                    elif fj.FatJetIdx==particle.FatJetIdx:
                                         tophigh_idxPFC.append(particle.Idx) 
                                         n_idxPFC+=1                              
                                 tophigh_idxPFC.append(-1*(ntophighpt+1))

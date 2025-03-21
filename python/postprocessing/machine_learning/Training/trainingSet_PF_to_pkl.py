@@ -16,7 +16,6 @@ import mplhep as hep
 hep.style.use(hep.style.CMS)
 import json
 from tqdm import tqdm
-import h5py
 import time
 
 
@@ -217,7 +216,7 @@ def process_batch(batch_indexes, inFile_to_open, component, categories, n_PFCs, 
             PFCands      = Collection(event,"PFCands")
             top_PFC_idx  = Collection(event,"Indexes")
             #presel toglibile se vogliamo
-      
+         
             variables_cluster     = None
             if verbose:
                 print(f"len(jets):\t{len(jets)}\tlen(fatjets):\t{len(fatjets)}")
@@ -416,7 +415,7 @@ parser                      = ArgumentParser()
 parser.add_argument("-year",                                dest="year",                                default=2018,               required=False,         type=int,       help="year of the dataset, to select the correct variables")
 parser.add_argument("-component",                           dest="component",                           default=None,               required=True,          type=str,       help="component to run")
 parser.add_argument("-inFile_to_open",                      dest="inFile_to_open",                      default=None,               required=True,          type=str,       help="path to root file to run")
-parser.add_argument("-path_to_h5",                          dest="path_to_h5",                          default="trainingSet.py",   required=False,         type=str,       help="path where save h5 to")
+parser.add_argument("-path_to_pkl",                         dest="path_to_pkl",                         default="trainingSet.py",   required=False,         type=str,       help="path where save pkl to")
 parser.add_argument("-nev",                                 dest="nev",                                 default=-1,                 required=False,         type=int,       help="number of events to run (defalut nev=-1, meand all events)")
 parser.add_argument("-select_top_over_threshold",           dest="select_top_over_threshold",           default=False,              action="store_true",                    help="Default do not select tops above threshold")
 parser.add_argument("-thr",                                 dest="thr",                                 default=0,                  required=False,         type=float,     help="score threshold to select tops above it")
@@ -431,19 +430,19 @@ year                        = options.year
 component                   = options.component
 inFile_to_open              = options.inFile_to_open
 nev                         = options.nev    
-path_to_h5                  = options.path_to_h5
+path_to_pkl                 = options.path_to_pkl
 select_top_over_threshold   = options.select_top_over_threshold
 thr                         = options.thr
 n_PFCs                      = options.n_PFCs
 pt_cut                      = options.pt_cut
 verbose                     = options.verbose
-def main(year=year, component=component, inFile_to_open=inFile_to_open, nev=nev, path_to_h5=path_to_h5, select_top_over_threshold=select_top_over_threshold, thr=thr, n_PFCs=n_PFCs, pt_cut=pt_cut, verbose=verbose):
+def main(year=year, component=component, inFile_to_open=inFile_to_open, nev=nev, path_to_pkl=path_to_pkl, select_top_over_threshold=select_top_over_threshold, thr=thr, n_PFCs=n_PFCs, pt_cut=pt_cut, verbose=verbose):
     if verbose:
         print(f"year:                           {year}")
         print(f"component:                      {component}")
         print(f"inFile_to_open:                 {inFile_to_open}")
         print(f"nev:                            {nev}")
-        print(f"path_to_h5:                    {path_to_h5}")
+        print(f"path_to_pkl:                    {path_to_pkl}")
         print(f"select_top_over_threshold:      {select_top_over_threshold}")
         print(f"thr:                            {thr}")
         print(f"n_PFCs:                         {n_PFCs}")
@@ -481,23 +480,10 @@ def main(year=year, component=component, inFile_to_open=inFile_to_open, nev=nev,
     for batch_output in batch_outputs[1:]:  # all_batch_outputs è la lista dei tuoi vari batch_output
         output=merge_batch_output(init,batch_output)
 
-    
-
-    if path_to_h5 is not None:
-        print(f"Saving output to: {path_to_h5}")
-        with h5py.File(path_to_h5, 'w') as f:
-            # Crea un gruppo per il componente
-            component_group = f.create_group(component)
-            
-            # Salva ogni categoria e i relativi dati
-            for cat, data in output[component].items():
-                data_group = component_group.create_group(cat)
-                data_group.create_dataset('jets', data=data[0],compression="gzip")      # Jets
-                data_group.create_dataset('fatjets', data=data[1],compression="gzip")   # Fatjets
-                data_group.create_dataset('PFC', data=data[2],compression="gzip")       # PFCs
-                data_group.create_dataset('top', data=data[3],compression="gzip")      # Mass
-                data_group.create_dataset('labels', data=data[4],compression="gzip")    # Labels
-
+    if path_to_pkl is not None:
+        print(path_to_pkl)
+        with open(path_to_pkl, "wb") as f:
+            pkl.dump(obj=output, file=f)
 
 if __name__ == "__main__":
     main()

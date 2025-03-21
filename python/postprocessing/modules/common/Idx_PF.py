@@ -49,10 +49,12 @@ class Idx_PF(Module):
         """process event, return True (go to next module) or False (fail, go to next event)"""        
         jets       = Collection(event,"Jet")
         Njets      = len(jets)
+        fatjets  = Collection(event,"FatJet")
         PFCs       = Collection(event,"PFCands")
         NPFCs      = len(PFCs)
         jetPFCs    = Collection(event,"JetPFCands")
         fatjetPFCs = Collection(event,"FatJetPFCands")
+        
 
         '''init variables to branch'''
         PFCs_jets_idx           = np.full(NPFCs,-1)

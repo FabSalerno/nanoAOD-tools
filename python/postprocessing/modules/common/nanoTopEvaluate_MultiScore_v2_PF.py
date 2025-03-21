@@ -251,9 +251,6 @@ class nanoTopevaluate_MultiScore(Module):
         fatjets  = Collection(event,"FatJet")
         nfatjets = len(fatjets)
 
-        goodjets, goodfatjets = presel(jets, fatjets)
-        ngoodjets             = len(goodjets)
-        ngoodfatjets          = len(goodfatjets)
 
         PFCands               = Collection(event,"PFCands")
         top_PFC_idx           = Collection(event,"Indexes")
@@ -296,22 +293,22 @@ class nanoTopevaluate_MultiScore(Module):
                                     phi_top=top.phi,
                                     M_top=top.mass)
             if top.idxJet2==-1:
-                j0, j1      = goodjets[top.idxJet0],goodjets[top.idxJet1]
-                fj          = goodfatjets[top.idxFatJet]
+                j0, j1      = jets[top.idxJet0],jets[top.idxJet1]
+                fj          = fatjets[top.idxFatJet]
                 sumjet      = j0.p4()+j1.p4()
                 jets_dnn    = fill_jets(jets_dnn = jets_dnn, j0=j0, j1=j1, j2=0, sumjet = sumjet,  fj_phi= fj.phi, fj_eta=fj.eta, idx_top=i)
                 fj_dnn      = fill_fj(fj_dnn, fj, i)
                 mass_dnn    = fill_mass(mass_dnn=mass_dnn, idx_top=i, j0=j0, j1=j1, j2 =None, fj = fj)
             elif top.idxFatJet==-1:
-                j0, j1, j2  = goodjets[top.idxJet0],goodjets[top.idxJet1],goodjets[top.idxJet2]
+                j0, j1, j2  = jets[top.idxJet0],jets[top.idxJet1],jets[top.idxJet2]
                 fj          = ROOT.TLorentzVector()
                 fj.SetPtEtaPhiM(0,0,0,0)
                 sumjet      = j0.p4()+j1.p4()+j2.p4()
                 jets_dnn    = fill_jets(jets_dnn, j0, j1, j2, sumjet, fj.Phi(), fj.Eta(), i)
                 mass_dnn    = fill_mass(mass_dnn=mass_dnn, idx_top=i, j0=j0, j1=j1, j2 =j2, fj = None)
             else:
-                j0, j1, j2  = goodjets[top.idxJet0],goodjets[top.idxJet1],goodjets[top.idxJet2]
-                fj          = goodfatjets[top.idxFatJet]
+                j0, j1, j2  = jets[top.idxJet0],jets[top.idxJet1],jets[top.idxJet2]
+                fj          = fatjets[top.idxFatJet]
                 sumjet      = j0.p4() + j1.p4() +j2.p4()
                 jets_dnn    = fill_jets(jets_dnn, j0, j1, j2, sumjet, fj.phi, fj.eta, i)
                 fj_dnn      = fill_fj(fj_dnn, fj, i)
@@ -344,7 +341,7 @@ class nanoTopevaluate_MultiScore(Module):
         
         jets_dnn = np.zeros((int(len(toplowpt)), 3, 8))        
         for i, top in enumerate(toplowpt):
-            j0, j1, j2 = goodjets[top.idxJet0],goodjets[top.idxJet1],goodjets[top.idxJet2]
+            j0, j1, j2 = jets[top.idxJet0],jets[top.idxJet1],jets[top.idxJet2]
             fj = ROOT.TLorentzVector()
             fj.SetPtEtaPhiM(0,0,0,0)
             sumjet = j0.p4()+j1.p4()+j2.p4()
