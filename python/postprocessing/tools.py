@@ -175,13 +175,31 @@ def get_pos_nums(num):
         num = num // 10
     return pos_nums
 
-def truth(j0=0, j1=0, j2=0, fj=0):
+def check_numbers(lst):
+    has_even_pos = any(x > 0 and x % 2 == 0 for x in lst)  # Pari positivi
+    has_even_neg = any(x < 0 and x % 2 == 0 for x in lst)  # Pari negativi
+    has_odd_pos = any(x > 0 and x % 2 != 0 for x in lst)   # Dispari positivi
+    has_odd_neg = any(x < 0 and x % 2 != 0 for x in lst)   # Dispari negativi
+
+    return  has_even_pos, has_even_neg, has_odd_pos, has_odd_neg
+  
+
+def get_quark_flavs(flav,sgn):
+    flavs = []
+    while flav != 0 and sgn != 0:
+        sgn_num  = (sgn % 10) -2
+        flavs.append((flav % 10)*(sgn_num))
+        sgn = sgn // 10
+        flav = flav // 10
+    return flavs
+
+def old_truth(j0=0, j1=0, j2=0, fj=0):
     top_truth = 0
     if not hasattr(j2, "pt"):
         if ((j0.matched>0 and j1.matched>0 and fj.matched>0) and
             (j0.topMother== j1.topMother and j0.topMother== fj.topMother)):
             flavs_j0, flavs_j1, flavs_fj = j0.pdgId, j1.pdgId, fj.pdgId
-            jetflavs_list = get_pos_nums(flavs_j0) + get_pos_nums(flavs_j1) 
+            jetflavs_list = get_pos_nums(flavs_j0) + get_pos_nums(flavs_j1)
             fatjetflavs_list = get_pos_nums(flavs_fj)
         else: 
             jetflavs_list = []
@@ -214,6 +232,163 @@ def truth(j0=0, j1=0, j2=0, fj=0):
         top_truth = 1
     else:
         top_truth = 0
+    #if top_truth == 1:
+        #print("standard_truth_jetlist",jetflavs_list)
+        #print("standard_truth_fatjetlist",fatjetflavs_list)
+    return top_truth
+
+def truth(j0=0, j1=0, j2=0, fj=0):
+    top_truth = 0
+    if not hasattr(j2, "pt"):
+        if ((j0.matched>0 and j1.matched>0 and fj.matched>0) and
+            (j0.topMother== j1.topMother and j0.topMother== fj.topMother)):
+            flavs_j0, flavs_j1, flavs_fj = j0.pdgId, j1.pdgId, fj.pdgId
+            sgns_j0, sgns_j1, sgns_fj = j0.pdgIdSign, j1.pdgIdSign, fj.pdgIdSign
+            jetflavs_list = get_quark_flavs(flavs_j0, sgns_j0) + get_quark_flavs(flavs_j1, sgns_j1)
+            fatjetflavs_list = get_quark_flavs(flavs_fj, sgns_fj)
+        else: 
+            jetflavs_list = []
+            fatjetflavs_list = []
+    else:
+        if hasattr(fj, "pt"):
+            if ((j0.matched>0 and j1.matched>0 and j2.matched>0 and fj.matched>0) and
+                (j0.topMother== j1.topMother and j1.topMother== j2.topMother and
+                   j2.topMother==fj.topMother)):
+                flavs_j0, flavs_j1, flavs_j2, flavs_fj = j0.pdgId, j1.pdgId, j2.pdgId, fj.pdgId
+                sgns_j0, sgns_j1, sgns_j2, sgns_fj = j0.pdgIdSign, j1.pdgIdSign, j2.pdgIdSign, fj.pdgIdSign
+                jetflavs_list = get_quark_flavs(flavs_j0, sgns_j0) + get_quark_flavs(flavs_j1, sgns_j1) + get_quark_flavs(flavs_j2, sgns_j2)
+                fatjetflavs_list = get_quark_flavs(flavs_fj, sgns_fj)
+            else: 
+                jetflavs_list = []
+                fatjetflavs_list = []
+        else:
+            if ((j0.matched>0 and j1.matched>0 and j2.matched>0) and
+                ( j0.topMother== j1.topMother and j1.topMother== j2.topMother)): 
+                flavs_j0, flavs_j1, flavs_j2 = j0.pdgId, j1.pdgId, j2.pdgId
+                sgns_j0, sgns_j1, sgns_j2 = j0.pdgIdSign, j1.pdgIdSign, j2.pdgIdSign
+                jetflavs_list = get_quark_flavs(flavs_j0, sgns_j0) + get_quark_flavs(flavs_j1, sgns_j1) + get_quark_flavs(flavs_j2, sgns_j2)
+                fatjetflavs_list = []
+            else: 
+                jetflavs_list = []
+                fatjetflavs_list = []
+    no_duplicates_fatjet = len(fatjetflavs_list) == len(np.unique(fatjetflavs_list))
+    no_duplicates_jet = len(jetflavs_list) == len(np.unique(jetflavs_list))
+
+    combined_flavs = jetflavs_list + fatjetflavs_list
+    unique_combined_flavs = np.unique(combined_flavs)
+    unique_abs_combined_flavs = np.unique(np.abs(combined_flavs))
+
+    # Verifica che la somma delle due liste abbia esattamente 3 quark differenti senza numeri di segno opposto
+    no_opposite_signs = len(unique_combined_flavs) == len(unique_abs_combined_flavs)
+    three_unique_quarks = len(unique_combined_flavs) == 3
+
+    if len(np.unique(jetflavs_list)) == 3 and len(np.unique(np.abs(jetflavs_list))) == 3: #le liste hanno esattamente 3 quark diversi in valore assoluto
+        even_pos, even_neg, odd_pos, odd_neg = check_numbers(jetflavs_list)
+        if 5 in jetflavs_list and even_pos and odd_neg:
+            top_truth = 1
+        elif -5 in jetflavs_list and even_neg and odd_pos:
+            top_truth = 1
+        else:
+            top_truth = 0
+    elif len(np.unique(fatjetflavs_list))==3 and len(np.unique(np.abs(fatjetflavs_list))) == 3: #le liste hanno esattamente 3 quark diversi in valore assoluto
+        even_pos, even_neg, odd_pos, odd_neg = check_numbers(fatjetflavs_list)
+        if 5 in fatjetflavs_list and even_pos and odd_neg:
+            top_truth = 1
+        elif -5 in fatjetflavs_list and even_neg and odd_pos:
+            top_truth = 1
+        else:
+            top_truth = 0
+        #print("ha passato l'if",jetflavs_list)
+    elif no_duplicates_fatjet and no_duplicates_jet and no_opposite_signs and three_unique_quarks:
+        even_pos, even_neg, odd_pos, odd_neg = check_numbers(combined_flavs)
+        if 5 in combined_flavs and even_pos and odd_neg:
+            top_truth = 1
+        elif -5 in combined_flavs and even_neg and odd_pos:
+            top_truth = 1
+        else:
+            top_truth = 0
+    else:
+        top_truth = 0
+
+    return top_truth
+
+def truth_partonFlavour(j0=0, j1=0, j2=0, fj=0):
+    top_truth = 0
+    if not hasattr(j2, "pt"):
+        if ((j0.matched_partonFlavour>0 and j1.matched_partonFlavour>0 and fj.matched>0) and
+            (j0.topMother== j1.topMother and j0.topMother== fj.topMother)):
+            flavs_j0, flavs_j1, flavs_fj = float(j0.partonFlavour), float(j1.partonFlavour), fj.pdgId
+            sgns_fj = fj.pdgIdSign
+            jetflavs_list = [flavs_j0] + [flavs_j1] 
+            fatjetflavs_list = get_quark_flavs(flavs_fj, sgns_fj)
+        else: 
+            jetflavs_list = []
+            fatjetflavs_list = []
+    else:
+        if hasattr(fj, "pt"):
+            if ((j0.matched_partonFlavour>0 and j1.matched_partonFlavour>0 and j2.matched_partonFlavour>0 and fj.matched>0) and
+                (j0.topMother== j1.topMother and j1.topMother== j2.topMother and
+                   j2.topMother==fj.topMother)):
+                flavs_j0, flavs_j1, flavs_j2, flavs_fj = float(j0.partonFlavour), float(j1.partonFlavour), float(j2.partonFlavour), fj.pdgId
+                sgns_fj = fj.pdgIdSign
+                jetflavs_list = [flavs_j0] + [flavs_j1] +[flavs_j2]
+                fatjetflavs_list = get_quark_flavs(flavs_fj, sgns_fj)
+            else: 
+                jetflavs_list = []
+                fatjetflavs_list = []
+        else:
+            if ((j0.matched_partonFlavour>0 and j1.matched_partonFlavour>0 and j2.matched_partonFlavour>0) and
+                ( j0.topMother== j1.topMother and j1.topMother== j2.topMother)): 
+                #print(float(j0.partonFlavour), float(j1.partonFlavour), float(j2.partonFlavour))
+                flavs_j0, flavs_j1, flavs_j2 = float(j0.partonFlavour), float(j1.partonFlavour), float(j2.partonFlavour)
+                #print(flavs_j0, flavs_j1, flavs_j2)
+                jetflavs_list = [flavs_j0] + [flavs_j1] + [flavs_j2]
+                #print("in costruzione", jetflavs_list)
+                fatjetflavs_list = []
+            else: 
+                jetflavs_list = []
+                fatjetflavs_list = []
+    #print(jetflavs_list)
+    no_duplicates_fatjet = len(fatjetflavs_list) == len(np.unique(fatjetflavs_list))
+    no_duplicates_jet = len(jetflavs_list) == len(np.unique(jetflavs_list))
+
+    # Combina le due liste e verifica che la somma dei quark abbia esattamente 3 valori unici senza numeri di segno opposto
+    combined_flavs = jetflavs_list + fatjetflavs_list
+    unique_combined_flavs = np.unique(combined_flavs)
+    unique_abs_combined_flavs = np.unique(np.abs(combined_flavs))
+
+    # Verifica che la somma delle due liste abbia esattamente 3 quark differenti senza numeri di segno opposto
+    no_opposite_signs = len(unique_combined_flavs) == len(unique_abs_combined_flavs)
+    three_unique_quarks = len(unique_combined_flavs) == 3
+
+    if len(jetflavs_list) == 3 and len(np.unique(np.abs(jetflavs_list))) == 3: #le liste hanno esattamente 3 quark diversi in valore assoluto
+        even_pos, even_neg, odd_pos, odd_neg = check_numbers(jetflavs_list)
+        if 5 in jetflavs_list and even_pos and odd_neg:
+            top_truth = 1
+        elif -5 in jetflavs_list and even_neg and odd_pos:
+            top_truth = 1
+        else:
+            top_truth = 0
+    elif len(np.unique(fatjetflavs_list))==3 and len(np.unique(np.abs(fatjetflavs_list))) == 3: #le liste hanno esattamente 3 quark diversi in valore assoluto
+        even_pos, even_neg, odd_pos, odd_neg = check_numbers(fatjetflavs_list)
+        if 5 in fatjetflavs_list and even_pos and odd_neg:
+            top_truth = 1
+        elif -5 in fatjetflavs_list and even_neg and odd_pos:
+            top_truth = 1
+        else:
+            top_truth = 0
+        #print("ha passato l'if",jetflavs_list)
+    elif no_duplicates_fatjet and no_duplicates_jet and no_opposite_signs and three_unique_quarks:
+        even_pos, even_neg, odd_pos, odd_neg = check_numbers(combined_flavs)
+        if 5 in combined_flavs and even_pos and odd_neg:
+            top_truth = 1
+        elif -5 in combined_flavs and even_neg and odd_pos:
+            top_truth = 1
+        else:
+            top_truth = 0
+    else:
+        top_truth = 0
+
     return top_truth
 
 def top_p4(category, top, jets, fatjets):
@@ -224,7 +399,7 @@ def top_p4(category, top, jets, fatjets):
     elif category == 2:
         p4 = top2j1fj(fatjets[top.idxFatJet], jets[top.idxJet0], jets[top.idxJet1])
     else:
-        print("Error idx Top category not ecpected : ", category)
+        print("Error idx Top category not expected : ", category)
     return p4
 
 def top2j1fj(fj, j0, j1, dr0=None, dr1=None):
@@ -268,7 +443,7 @@ def top3j1fj(fj, j0, j1, j2, dr0=None, dr1=None, dr2=None):
 
 
 def get_jet(jets):
-    goodjet = list(filter(lambda x : x.jetId and x.pt>25 , jets))
+    goodjet = list(filter(lambda x : x.jetId and x.pt>0 , jets)) #!!!!!!!!
     idx_good = 0
     for idx_jet in range(len(jets)):
         if jets[idx_jet] in goodjet:

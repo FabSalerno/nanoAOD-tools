@@ -123,8 +123,6 @@ class nanoTopcand(Module):
         self.out.branch("TopMixed_phi", "F", lenVar="nTopMixed")
         self.out.branch("TopMixed_mass", "F", lenVar="nTopMixed")
         self.out.branch("TopMixed_truth", "F", lenVar="nTopMixed")
-        self.out.branch("TopMixed_old_truth", "F", lenVar="nTopMixed")
-        self.out.branch("TopMixed_truth_partonFlavour", "F", lenVar="nTopMixed")
         self.out.branch("TopMixed_category", "I", lenVar="nTopMixed")
         self.out.branch("TopMixed_nquark", "I", lenVar="nTopMixed")
         "branches Top candidate low pt"
@@ -211,7 +209,7 @@ class nanoTopcand(Module):
                         toplow_phi_.append(top_p4.Phi())
                         toplow_mass_.append(top_p4.M())
                         if self.isMC:
-                            toplow_truth.append(truth(j0=j0, j1=j1, j2=j2))
+                            toplow_truth.append(old_truth(j0=j0, j1=j1, j2=j2))
                             #print("prova toplow_pre")
                             #toplow_truth_partonFlavour.append(truth_partonFlavour(j0=j0, j1=j1, j2=j2))
                             #print("prova toplow_post")
@@ -252,7 +250,7 @@ class nanoTopcand(Module):
                             #print("idxPFC final 2j1fj",tophigh_idxPFC)
 
                             if self.isMC and self.multiscore==0:
-                                tophigh_truth.append(truth(j0=j0, j1=j1, fj=fj)) 
+                                tophigh_truth.append(old_truth(j0=j0, j1=j1, fj=fj)) 
                                 tophigh_old_truth.append(old_truth(j0=j0, j1=j1, fj=fj)) 
                                 #print("prova tophigh_pre 2j1fj")
                                 tophigh_truth_partonFlavour.append(truth_partonFlavour(j0=j0, j1=j1, fj=fj)) 
@@ -266,7 +264,7 @@ class nanoTopcand(Module):
                                     tophigh_truth.append(-1)
                                 
                                 else:
-                                    tophigh_truth.append(truth(j0=j0, j1=j1, fj=fj)) 
+                                    tophigh_truth.append(old_truth(j0=j0, j1=j1, fj=fj)) 
                                     tophigh_truth_partonFlavour.append(truth_partonFlavour(j0=j0, j1=j1, fj=fj)) 
                                
                             else:
@@ -306,7 +304,7 @@ class nanoTopcand(Module):
                             n_idxPFC+=1 
                             #print("idxPFC_3j0fj final",tophigh_idxPFC)
                             if self.isMC and self.multiscore==0:
-                                tophigh_truth.append(truth(j0=j0, j1=j1, j2=j2))
+                                tophigh_truth.append(old_truth(j0=j0, j1=j1, j2=j2))
                                 tophigh_old_truth.append(old_truth(j0=j0, j1=j1, j2=j2))
                                 #print("prova tophigh_pre 3j0fj")
                                 tophigh_truth_partonFlavour.append(truth_partonFlavour(j0=j0, j1=j1, j2=j2))
@@ -320,7 +318,7 @@ class nanoTopcand(Module):
                                     tophigh_truth.append(-1)
 
                                 else:
-                                    tophigh_truth.append(truth(j0=j0, j1=j1, j2=j2))
+                                    tophigh_truth.append(old_truth(j0=j0, j1=j1, j2=j2))
                                     tophigh_truth_partonFlavour.append(truth_partonFlavour(j0=j0, j1=j1, j2=j2)) 
                                 
                             else: 
@@ -360,7 +358,7 @@ class nanoTopcand(Module):
                                 n_idxPFC+=1 
                                 #print("idxPFC final 3j1fj",tophigh_idxPFC)
                                 if self.isMC and self.multiscore==0:
-                                    tophigh_truth.append(truth(j0=j0, j1=j1, j2=j2, fj=fj))
+                                    tophigh_truth.append(old_truth(j0=j0, j1=j1, j2=j2, fj=fj))
                                     tophigh_old_truth.append(old_truth(j0=j0, j1=j1, j2=j2, fj=fj))
                                     #print("prova tophigh_pre 3j1fj")
                                     tophigh_truth_partonFlavour.append(truth_partonFlavour(j0=j0, j1=j1, j2=j2, fj=fj))
@@ -374,7 +372,7 @@ class nanoTopcand(Module):
                                         tophigh_truth.append(-1)
                                                                       
                                     else:
-                                        tophigh_truth.append(truth(j0=j0, j1=j1, j2=j2, fj=fj)) 
+                                        tophigh_truth.append(old_truth(j0=j0, j1=j1, j2=j2, fj=fj)) 
                                         tophigh_truth_partonFlavour.append(truth_partonFlavour(j0=j0, j1=j1, j2=j2, fj=fj))
 
                                 else: 
@@ -410,8 +408,6 @@ class nanoTopcand(Module):
         self.out.fillBranch("TopMixed_phi", tophigh_phi_)
         self.out.fillBranch("TopMixed_mass", tophigh_mass_)
         self.out.fillBranch("TopMixed_truth", tophigh_truth)
-        self.out.fillBranch("TopMixed_old_truth", tophigh_old_truth)
-        self.out.fillBranch("TopMixed_truth_partonFlavour", tophigh_truth_partonFlavour)
         self.out.fillBranch("TopMixed_nquark", tophigh_nquark)
         # t1 = datetime.now()
         # print("TopCandidate module time :", t1-t0)  
